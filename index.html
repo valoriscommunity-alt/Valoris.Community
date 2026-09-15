@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta name="valoris-version" content="19.0.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Valoris">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Valoris Community — gaming, social, eventi e nuove amicizie. Entra nella nostra community Discord.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-version" content="19.0.0">
+  <meta property="og:title" content="Valoris Community">
+  <meta property="og:description" content="Gaming, social, eventi e nuove amicizie. Entra nella community ufficiale di Valoris.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Valoris Community">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Valoris Community">
+  <meta name="twitter:description" content="Gaming, social, eventi e nuove amicizie. Entra nella community ufficiale di Valoris.">
+  <meta name="twitter:image" content="logo.png">
+  <link rel="icon" href="favicon.ico?v=4" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=4">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=1">
+  <link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-startup-image" href="icon-512.png">
+
+  <link rel="preload" as="image" href="logo.png">
+  <title>Valoris Community — Discord Gaming & Social</title>
+  <link rel="canonical" href="/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Valoris Community","description":"Community Discord di Valoris: gaming, social, eventi e nuove amicizie.","url":"/"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #03070d;
+      --bg2: #07111f;
+      --panel: rgba(10, 24, 43, .72);
+      --line: rgba(42, 137, 255, .20);
+      --blue: #1677ff;
+      --cyan: #00d9ff;
+      --white: #f6faff;
+      --muted: #9fb1c8;
+      --shadow: 0 0 40px rgba(0, 128, 255, .18);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(0, 123, 255, .22), transparent 36%),
+        radial-gradient(circle at 90% 35%, rgba(0, 217, 255, .09), transparent 25%),
+        var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(3,7,13,.62);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: .4px; }
+    .brand img { width: 46px; height: 46px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,150,255,.55)); }
+    .brand span { font-family: Orbitron, sans-serif; font-size: 15px; }
+    .navlinks { display: flex; gap: 26px; color: #c6d3e4; font-size: 14px; }
+    .navlinks a:hover { color: white; }
+    .nav-cta { padding: 11px 17px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), #0750c9); box-shadow: 0 8px 25px rgba(0,102,255,.22); font-weight: 700; font-size: 14px; }
+
+    .hero { min-height: 100vh; display: grid; place-items: center; padding: 120px 0 70px; position: relative; }
+    .hero-content { text-align: center; max-width: 860px; }
+    .logo-wrap {
+      width: 310px; height: 310px; margin: 0 auto 20px; display: grid; place-items: center;
+      position: relative;
+    }
+    .logo-wrap::before {
+      content: ""; position: absolute; width: 280px; height: 280px; border-radius: 50%;
+      background: rgba(0,119,255,.16); filter: blur(40px);
+    }
+    .logo-wrap img { width: 100%; height: 100%; object-fit: contain; position: relative; filter: drop-shadow(0 0 28px rgba(0,150,255,.55)); animation: float 5s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-8px); } }
+
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: 4px; font-size: 12px; font-weight: 800; margin-bottom: 15px; }
+    h1 { font-family: Orbitron, sans-serif; font-size: clamp(36px, 7vw, 74px); line-height: 1.03; letter-spacing: -2px; }
+    h1 span { background: linear-gradient(90deg, #fff, #62b8ff, #00eaff); -webkit-background-clip: text; color: transparent; }
+    .hero p { max-width: 680px; margin: 22px auto 30px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+    .actions { display: flex; justify-content: center; gap: 13px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 22px; border-radius: 13px; font-weight: 800; transition: .2s ease; border: 1px solid transparent; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, #1785ff, #0751d6); box-shadow: 0 10px 35px rgba(0,107,255,.28); }
+    .btn-secondary { background: rgba(255,255,255,.045); border-color: rgba(255,255,255,.12); color: #dce9f8; }
+
+    section { padding: 95px 0; }
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 45px; }
+    .section-head h2 { font-family: Orbitron, sans-serif; font-size: clamp(26px, 4vw, 40px); margin-bottom: 13px; }
+    .section-head p { color: var(--muted); line-height: 1.7; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      padding: 28px; border-radius: var(--radius); background: linear-gradient(145deg, rgba(15,33,57,.72), rgba(5,14,26,.72));
+      border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .card::after { content: ""; position: absolute; width: 130px; height: 130px; right: -60px; top: -70px; background: rgba(0,160,255,.11); border-radius: 50%; filter: blur(20px); }
+    .icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 20px; background: rgba(0,128,255,.13); border: 1px solid rgba(0,185,255,.18); font-size: 22px; }
+    .card h3 { margin-bottom: 10px; font-size: 18px; }
+    .card p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+    .panel { padding: 34px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: var(--shadow); }
+    .panel h3 { font-family: Orbitron, sans-serif; margin-bottom: 16px; }
+    .panel p, .panel li { color: var(--muted); line-height: 1.7; }
+    .panel ul { list-style: none; display: grid; gap: 13px; }
+    .panel li::before { content: "✓"; color: var(--cyan); font-weight: 900; margin-right: 10px; }
+
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; counter-reset: step; }
+    .step { padding: 28px; border-radius: var(--radius); background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.08); }
+    .step .num { font-family: Orbitron, sans-serif; font-size: 34px; color: #258cff; margin-bottom: 16px; }
+    .step h3 { margin-bottom: 9px; }
+    .step p { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    .faq { max-width: 850px; margin: auto; display: grid; gap: 12px; }
+    details { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.08); border-radius: 15px; padding: 18px 20px; }
+    summary { cursor: pointer; font-weight: 700; }
+    details p { color: var(--muted); line-height: 1.7; padding-top: 12px; font-size: 14px; }
+
+    .cta {
+      text-align: center; padding: 65px 25px; border-radius: 28px; border: 1px solid rgba(0,178,255,.28);
+      background: radial-gradient(circle at 50% 0%, rgba(0,153,255,.18), transparent 55%), rgba(8,20,35,.82);
+      box-shadow: 0 0 70px rgba(0,111,255,.13);
+    }
+    .cta h2 { font-family: Orbitron, sans-serif; font-size: clamp(27px, 4vw, 43px); margin-bottom: 14px; }
+    .cta p { color: var(--muted); max-width: 650px; margin: 0 auto 25px; line-height: 1.7; }
+
+    footer { border-top: 1px solid rgba(255,255,255,.07); padding: 30px 0; color: #8396ad; font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-inner a { color: #b9c9dc; }
+    .footer-inner a:hover { color: white; }
+
+
+    /* Tema chiaro */
+    body.light {
+      --bg: #eef5fc;
+      --bg2: #f7fbff;
+      --panel: rgba(255,255,255,.86);
+      --line: rgba(16,96,180,.16);
+      --white: #102034;
+      --muted: #52657b;
+      --shadow: 0 14px 40px rgba(31,89,143,.12);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(55,145,255,.17), transparent 36%),
+        radial-gradient(circle at 90% 35%, rgba(0, 217, 255, .10), transparent 25%),
+        var(--bg);
+    }
+    body.light::before {
+      background-image:
+        linear-gradient(rgba(16,32,52,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,32,52,.035) 1px, transparent 1px);
+    }
+    body.light header { background: rgba(248,252,255,.78); border-bottom-color: rgba(16,32,52,.08); }
+    body.light .navlinks { color: #4c6076; }
+    body.light .navlinks a:hover,
+    body.light .footer-inner a:hover { color: #0b4d9a; }
+    body.light .brand span,
+    body.light .section-head h2,
+    body.light .cta h2,
+    body.light .panel h3,
+    body.light .card h3,
+    body.light .step h3 { color: #102034; }
+    body.light .btn-secondary,
+    body.light .utility-chip,
+    body.light .step,
+    body.light details { background: rgba(255,255,255,.65); color: #18304a; border-color: rgba(16,96,180,.15); }
+    body.light .announcement { background: rgba(52,143,255,.08); border-bottom-color: rgba(16,96,180,.12); }
+    body.light .announcement-inner { color: #425870; }
+    body.light .stat { background: rgba(255,255,255,.65); border-color: rgba(16,96,180,.15); }
+    body.light footer { border-top-color: rgba(16,32,52,.08); color: #62758c; }
+    body.light .panel,
+    body.light .card { box-shadow: 0 14px 40px rgba(31,89,143,.10); }
+    body.light .cta { background: radial-gradient(circle at 50% 0%, rgba(0,153,255,.12), transparent 55%), rgba(255,255,255,.78); }
+    body.light .faq-tools input { background: rgba(255,255,255,.78); color: #102034; border-color: rgba(16,96,180,.15); }
+    .vote-card {
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:24px;
+      align-items:center;
+      max-width:900px;
+      margin:0 auto;
+      padding:32px;
+      border-radius:var(--radius);
+      border:1px solid rgba(0,185,255,.22);
+      background:radial-gradient(circle at 10% 0%, rgba(0,153,255,.13), transparent 38%), var(--panel);
+      box-shadow:var(--shadow);
+    }
+    .vote-icon {
+      width:74px;
+      height:74px;
+      display:grid;
+      place-items:center;
+      border-radius:20px;
+      background:rgba(255,193,7,.10);
+      border:1px solid rgba(255,193,7,.24);
+      font-size:34px;
+      box-shadow:0 0 35px rgba(255,193,7,.08);
+    }
+    .vote-content h3 { font-family:Orbitron,sans-serif; font-size:28px; margin-bottom:10px; }
+    .vote-content p { color:var(--muted); line-height:1.7; max-width:720px; }
+    .vote-actions { margin-top:20px; display:flex; flex-wrap:wrap; gap:12px; }
+    body.light .vote-card { background:rgba(255,255,255,.78); }
+    body.light .vote-icon { background:rgba(255,193,7,.12); }
+.social-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .social-card { display:flex; align-items:center; gap:16px; padding:24px; border-radius:var(--radius); background:linear-gradient(145deg, rgba(15,33,57,.72), rgba(5,14,26,.72)); border:1px solid var(--line); box-shadow:var(--shadow); }
+    .social-card .social-icon { width:54px; height:54px; flex:0 0 54px; border-radius:16px; display:grid; place-items:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); }
+    .social-card .social-icon svg { width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:1.8; }
+    .social-card h3 { margin-bottom:6px; font-size:17px; }
+    .social-card p { color:var(--muted); font-size:13px; line-height:1.6; margin-bottom:13px; }
+    .social-card .btn { padding:10px 15px; }
+    body.light .social-card { background:rgba(255,255,255,.72); }
+@media (max-width: 980px) {
+      .social-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width: 800px) {
+      .navlinks { display: none; }
+      .grid, .steps, .about { grid-template-columns: 1fr; }
+      .logo-wrap { width: 250px; height: 250px; }
+      section { padding: 75px 0; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 800px) {
+      .stats { grid-template-columns:1fr; }
+      .event-card { grid-template-columns:1fr; }
+      .vote-card { grid-template-columns:1fr; text-align:center; padding:24px; }
+      .vote-icon { margin:0 auto; }
+      .vote-actions { justify-content:center; }
+      .vote-actions .btn { width:100%; min-height:48px; }
+      .utility-bar { padding-right:0; }
+      .utility-chip { padding:7px 10px; }
+      .hero-trust { font-size:11px; }
+    }
+    @media (max-width: 480px) {
+      .container { width: min(100% - 26px, 1120px); }
+      .nav-cta { padding: 9px 12px; font-size: 12px; }
+      .brand img { width: 40px; height: 40px; }
+      .hero { padding-top: 105px; }
+      .logo-wrap { width: 220px; height: 220px; }
+      .hero p { font-size: 15px; }
+      .vote-content h3 { font-size:24px; }
+      .vote-card { padding:22px 18px; }
+    }
+
+    /* --- Funzionalità interattive --- */
+    .utility-bar { display:flex; align-items:center; justify-content:center; gap:10px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+    .utility-chip { border:1px solid rgba(0,185,255,.18); background:rgba(255,255,255,.035); color:#cfe2f8; border-radius:999px; padding:7px 12px; font-size:12px; }
+    .utility-chip strong { color:var(--cyan); }
+    .theme-toggle { cursor:pointer; }
+    nav { position: relative; }
+    .mobile-menu { display:none; cursor:pointer; min-width:44px; height:44px; border:1px solid rgba(0,185,255,.18); background:rgba(255,255,255,.035); color:#cfe2f8; border-radius:12px; font-size:20px; }
+    .mobile-menu.is-open { background:rgba(0,119,255,.13); color:#fff; }
+    .navlinks.open { display:flex; }
+    @media (max-width: 800px) {
+      .navlinks.open {
+        position:absolute; top:calc(100% + 10px); left:0; right:0;
+        display:grid; gap:6px; padding:12px;
+        background:rgba(4,12,22,.96); border:1px solid rgba(0,185,255,.18);
+        border-radius:16px; box-shadow:0 18px 45px rgba(0,0,0,.35);
+        backdrop-filter:blur(18px);
+      }
+      .navlinks.open a { padding:12px 13px; border-radius:10px; }
+      .navlinks.open a:hover { background:rgba(0,150,255,.10); }
+      .mobile-menu { display:inline-grid; place-items:center; }
+      .utility-bar { margin-left:auto; }
+    }
+    body.light .mobile-menu { color:#18304a; background:rgba(255,255,255,.72); border-color:rgba(16,96,180,.15); }
+    body.light .navlinks.open { background:rgba(248,252,255,.98); border-color:rgba(16,96,180,.15); box-shadow:0 18px 45px rgba(31,89,143,.16); }
+    .announcement { margin-top:76px; padding:10px 0; background:rgba(0,119,255,.08); border-bottom:1px solid rgba(0,185,255,.12); }
+    .announcement-inner { display:flex; justify-content:center; align-items:center; gap:10px; font-size:13px; color:#cfe2f8; }
+    .announcement b { color:var(--cyan); }
+    .announcement button { background:none; border:0; color:#8da4be; cursor:pointer; font-size:18px; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+    .stat { padding:18px; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.03); text-align:center; }
+    .stat strong { display:block; font:800 26px Orbitron,sans-serif; }
+    .stat span { display:block; color:var(--muted); font-size:12px; margin-top:6px; }
+    .live-members-stat { position:relative; overflow:hidden; }
+    .live-members-stat strong { min-height:31px; }
+    .live-members-stat > span { display:flex; justify-content:center; align-items:center; gap:7px; }
+    .live-dot { display:inline-block !important; width:8px !important; height:8px !important; min-width:8px; border-radius:50%; background:#35e29a; box-shadow:0 0 12px rgba(53,226,154,.7); margin-top:0 !important; }
+    .member-updated { display:block; margin-top:5px; color:#7f95ad; font-size:10px; line-height:1.4; }
+    .live-members-stat.is-loading .live-dot { animation: memberPulse 1s ease-in-out infinite; }
+    .live-members-stat.is-error .live-dot { background:#ff6b6b; box-shadow:0 0 12px rgba(255,107,107,.45); }
+    @keyframes memberPulse { 0%,100%{opacity:.45;transform:scale(.86)} 50%{opacity:1;transform:scale(1.12)} }
+    .hero-trust { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 18px; margin-top:22px; color:#b7c9dc; font-size:12px; }
+    .hero-trust span { display:inline-flex; align-items:center; gap:7px; }
+    .event-card { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center; margin-top:30px; }
+    .event-kicker { color:var(--cyan); font-size:11px; font-weight:800; letter-spacing:2.8px; margin-bottom:10px; }
+    .event-status { min-height:170px; padding:24px; border-radius:18px; background:rgba(0,126,255,.08); border:1px solid rgba(0,185,255,.16); display:flex; flex-direction:column; justify-content:center; gap:9px; }
+    .event-status-dot { width:10px; height:10px; border-radius:50%; background:#35e29a; box-shadow:0 0 16px rgba(53,226,154,.65); }
+    .event-status small { color:var(--muted); line-height:1.55; }
+    .faq-tools { max-width:850px; margin:0 auto 14px; }
+    .faq-tools input { width:100%; padding:13px 15px; border-radius:12px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); color:#eef7ff; outline:none; }
+    .faq-tools input:focus { border-color:rgba(0,185,255,.42); box-shadow:0 0 0 4px rgba(0,150,255,.08); }
+
+  
+    /* --- Atmosfera dinamica: nessuna libreria richiesta --- */
+    .ambient { position: fixed; inset: 0; pointer-events: none; z-index: -2; overflow: hidden; }
+    .ambient::after {
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(circle at 50% 20%, transparent 0 24%, rgba(3,7,13,.22) 48%, rgba(3,7,13,.7) 100%);
+    }
+    .aurora { position:absolute; width:42vw; height:42vw; border-radius:50%; filter:blur(70px); opacity:.18; mix-blend-mode:screen; animation: drift 18s ease-in-out infinite alternate; }
+    .aurora-a { left:-8vw; top:8vh; background:#006dff; }
+    .aurora-b { right:-12vw; top:28vh; background:#00eaff; animation-duration:22s; animation-direction:alternate-reverse; }
+    .aurora-c { left:35vw; bottom:-24vw; background:#4c2dff; animation-duration:25s; }
+    @keyframes drift { from { transform:translate3d(0,0,0) scale(1); } to { transform:translate3d(5vw,-3vh,0) scale(1.18); } }
+
+    #particleCanvas { position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity:.72; }
+    .hero { isolation:isolate; }
+    .hero::before {
+      content:""; position:absolute; inset:14% 8% auto; height:360px;
+      border-radius:50%; background:radial-gradient(ellipse, rgba(0,140,255,.16), transparent 68%);
+      filter:blur(10px); pointer-events:none; animation:pulseGlow 6s ease-in-out infinite;
+    }
+    @keyframes pulseGlow { 50% { transform:scale(1.08); opacity:.72; } }
+
+    .hero-logo { perspective:900px; }
+    .hero-logo img { transform-style:preserve-3d; }
+    .orbit {
+      position:absolute; border:1px solid rgba(64,181,255,.24); border-radius:50%;
+      pointer-events:none; opacity:.9;
+    }
+    .orbit-1 { width:275px; height:135px; transform:rotate(-18deg); animation:spin 12s linear infinite; }
+    .orbit-2 { width:315px; height:170px; transform:rotate(35deg); animation:spinReverse 16s linear infinite; border-color:rgba(0,229,255,.16); }
+    .orbit-dot { position:absolute; width:8px; height:8px; border-radius:50%; background:#64d9ff; box-shadow:0 0 16px #2ec7ff; }
+    .dot-1 { top:72px; right:38px; animation:orbitDot 6s linear infinite; }
+    .dot-2 { bottom:70px; left:50px; animation:orbitDot 8s linear infinite reverse; }
+    .dot-3 { top:132px; left:18px; animation:orbitDot 7s linear infinite; }
+    @keyframes spin { to { transform:rotate(-18deg) rotate(360deg); } }
+    @keyframes spinReverse { to { transform:rotate(35deg) rotate(-360deg); } }
+    @keyframes orbitDot { 50% { transform:translate3d(8px,-14px,0) scale(1.35); } }
+
+    .hero-title { text-shadow:0 0 35px rgba(0,140,255,.12); }
+    .hero-title span { background-size:200% auto; animation:gradientFlow 6s linear infinite; }
+    @keyframes gradientFlow { to { background-position:200% center; } }
+
+    .card, .panel, .step, details, .social-card, .cta, .stat { transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease; }
+    .card:hover, .panel:hover, .step:hover, .social-card:hover { transform:translateY(-7px); border-color:rgba(71,184,255,.34); box-shadow:0 20px 55px rgba(0,120,255,.18); }
+    .stat:hover { transform:translateY(-4px); border-color:rgba(71,184,255,.28); }
+    .btn-primary { position:relative; overflow:hidden; }
+    .btn-primary::after {
+      content:""; position:absolute; inset:-80% 35% auto -25%; height:220%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);
+      transform:rotate(22deg) translateX(-120%); transition:transform .7s ease;
+    }
+    .btn-primary:hover::after { transform:rotate(22deg) translateX(180%); }
+
+    [data-reveal] { opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s ease; }
+    [data-reveal].is-visible { opacity:1; transform:none; }
+
+    /* Contorni neon animati */
+    .card, .panel, .step, details, .social-card, .cta, .stat, .utility-chip, .nav-cta, .btn-secondary {
+      position: relative;
+      isolation: isolate;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+    }
+    .card::before, .panel::before, .step::before, details::before,
+    .social-card::before, .cta::before, .stat::before,
+    .utility-chip::before, .nav-cta::before, .btn-secondary::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(
+        from var(--border-angle, 0deg),
+        rgba(0, 126, 255, .12),
+        rgba(0, 220, 255, .72),
+        rgba(69, 135, 255, .20),
+        rgba(0, 126, 255, .12)
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 3;
+      animation: borderSweep 4.8s linear infinite;
+    }
+    .card:hover::before, .panel:hover::before, .step:hover::before, details:hover::before,
+    .social-card:hover::before, .cta:hover::before, .stat:hover::before,
+    .utility-chip:hover::before, .nav-cta:hover::before, .btn-secondary:hover::before {
+      animation-duration: 2.4s;
+      filter: drop-shadow(0 0 6px rgba(0, 196, 255, .55));
+    }
+    .card > *, .panel > *, .step > *, details > *, .social-card > *, .cta > *, .stat > *,
+    .utility-chip > *, .nav-cta > *, .btn-secondary > * { position: relative; z-index: 4; }
+    @keyframes borderSweep {
+      to { --border-angle: 360deg; }
+    }
+    @property --border-angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    body.light .card::before, body.light .panel::before, body.light .step::before,
+    body.light details::before, body.light .social-card::before, body.light .cta::before,
+    body.light .stat::before, body.light .utility-chip::before, body.light .nav-cta::before,
+    body.light .btn-secondary::before {
+      background: conic-gradient(
+        from var(--border-angle, 0deg),
+        rgba(39, 111, 190, .10),
+        rgba(0, 157, 255, .62),
+        rgba(75, 145, 255, .14),
+        rgba(39, 111, 190, .10)
+      );
+    }
+
+
+    .btn-primary {
+      border: 1px solid rgba(68, 194, 255, .32);
+      box-shadow: 0 10px 35px rgba(0,107,255,.28), 0 0 0 1px rgba(0,190,255,.05);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(0,145,255,.34), 0 0 0 1px rgba(0,210,255,.20);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+      #particleCanvas { display:none; }
+    }
+
+  
+    .brand img{display:block!important;visibility:visible!important;opacity:1!important}
+    .hero-logo{display:flex!important;visibility:visible!important;opacity:1!important}
+    .hero-logo img{display:block!important;visibility:visible!important;opacity:1!important}
+
+
+
+    /* --- Ottimizzazione mobile Android + iOS --- */
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { -webkit-tap-highlight-color: rgba(0, 150, 255, .16); }
+    button, a, summary, input { -webkit-tap-highlight-color: transparent; }
+    button, a { touch-action: manipulation; }
+
+    @media (max-width: 800px) {
+      :root { --radius: 18px; }
+      body { min-width: 320px; }
+      .container { width: min(100% - 24px, 720px); }
+
+      header {
+        padding-top: env(safe-area-inset-top);
+      }
+      nav {
+        height: 62px;
+        gap: 8px;
+      }
+      .brand { min-width: 0; gap: 8px; }
+      .brand img { width: 38px; height: 38px; flex: 0 0 38px; }
+      .brand span { font-size: 13px; letter-spacing: .2px; white-space: nowrap; }
+
+      .nav-cta { display: none; }
+      .utility-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-left: auto;
+        padding: 0;
+      }
+      .utility-bar .utility-chip:first-child { display: none; }
+      .theme-toggle,
+      .mobile-menu {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        min-height: 44px;
+        padding: 0;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 12px;
+        font-size: 19px;
+      }
+      .theme-toggle { overflow: hidden; white-space: nowrap; }
+
+      .navlinks.open {
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        max-height: calc(100svh - 82px - env(safe-area-inset-top));
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        padding: 8px;
+      }
+      .navlinks.open a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 12px 14px;
+        font-size: 15px;
+      }
+      body.menu-open { overflow: hidden; }
+
+      .announcement {
+        margin-top: calc(62px + env(safe-area-inset-top));
+        padding: 8px 0;
+      }
+      .announcement-inner {
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+      .announcement-inner span { flex: 1; }
+      .announcement button {
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+        display: grid;
+        place-items: center;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 52px 0 56px;
+      }
+      .logo-wrap {
+        width: min(60vw, 200px);
+        height: min(60vw, 200px);
+        margin-bottom: 12px;
+      }
+      .logo-wrap::before { width: 175px; height: 175px; filter: blur(34px); }
+      .orbit-1 { width: 185px; height: 92px; }
+      .orbit-2 { width: 215px; height: 116px; }
+      .dot-1 { top: 52px; right: 25px; }
+      .dot-2 { bottom: 46px; left: 34px; }
+      .dot-3 { top: 96px; left: 10px; }
+
+      .eyebrow { letter-spacing: 2.3px; font-size: 10px; margin-bottom: 10px; }
+      h1 { font-size: clamp(31px, 10vw, 45px); line-height: 1.08; letter-spacing: -1.2px; }
+      .hero p {
+        margin: 17px auto 22px;
+        max-width: 42rem;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+      .actions { width: 100%; gap: 10px; }
+      .hero .actions .btn,
+      .event-card .actions .btn,
+      .cta .btn {
+        width: 100%;
+        min-height: 48px;
+      }
+      .hero-trust {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 18px;
+        font-size: 11px;
+      }
+      .hero-trust span { justify-content: center; }
+      .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px; }
+      .stat { padding: 14px 8px; border-radius: 15px; }
+      .stat strong { font-size: 20px; }
+      .stat span { font-size: 10px; line-height: 1.35; }
+
+      section { padding: 58px 0; }
+      .section-head { margin-bottom: 28px; }
+      .section-head h2 { font-size: clamp(24px, 7vw, 31px); margin-bottom: 9px; }
+      .section-head p { font-size: 14px; line-height: 1.6; }
+
+      .grid, .steps, .about, .social-grid { grid-template-columns: 1fr; gap: 12px; }
+      .card, .panel, .step, .social-card { padding: 21px; }
+      .card h3, .step h3 { font-size: 17px; }
+      .card p, .panel p, .panel li, .step p, .social-card p { font-size: 13px; line-height: 1.62; }
+      .icon { width: 44px; height: 44px; margin-bottom: 15px; }
+
+      .event-card { grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+      .event-status { min-height: auto; padding: 18px; }
+      .event-card .actions { margin-top: 16px !important; }
+
+      .faq-tools { margin-bottom: 10px; }
+      .faq-tools input {
+        min-height: 48px;
+        padding: 12px 14px;
+        font-size: 16px; /* evita lo zoom automatico di Safari iOS */
+      }
+      .faq { gap: 9px; }
+      details { padding: 16px 15px; }
+      summary { font-size: 14px; line-height: 1.45; padding-right: 4px; }
+      details p { font-size: 13px; line-height: 1.62; padding-top: 10px; }
+
+      .cta { padding: 40px 18px; border-radius: 22px; }
+      .cta h2 { font-size: clamp(24px, 7vw, 32px); }
+      .cta p { font-size: 14px; line-height: 1.6; }
+
+      footer { padding: 24px 0 calc(24px + env(safe-area-inset-bottom)); }
+      .footer-inner { gap: 10px; font-size: 12px; line-height: 1.6; }
+      .footer-inner span:last-child { display: flex; justify-content: center; flex-wrap: wrap; gap: 3px 6px; }
+
+      .floating-top { width: 46px; height: 46px; right: 13px; bottom: calc(13px + env(safe-area-inset-bottom)); }
+      .toast { left: 12px; right: 12px; bottom: calc(72px + env(safe-area-inset-bottom)); max-width: none; text-align: center; }
+
+      #particleCanvas { opacity: .30; }
+      .aurora { opacity: .10; filter: blur(54px); }
+      .hero::before { animation: none; opacity: .55; }
+      .hero-logo img { animation-duration: 7s; }
+      .card:hover, .panel:hover, .step:hover, .social-card:hover, .stat:hover { transform: none; }
+    }
+
+    @media (max-width: 520px) {
+      .stats { grid-template-columns: 1fr; }
+      .stat { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
+      .stat strong { font-size: 18px; }
+      .stat span { margin-top: 0; font-size: 11px; }
+      .logo-wrap { width: 184px; height: 184px; }
+      .orbit-1 { width: 170px; height: 84px; }
+      .orbit-2 { width: 190px; height: 102px; }
+    }
+
+    @media (max-width: 360px) {
+      .container { width: min(100% - 18px, 720px); }
+      .brand span { font-size: 12px; }
+      h1 { font-size: 30px; }
+      .hero p { font-size: 14px; }
+      .logo-wrap { width: 170px; height: 170px; }
+      .orbit-1 { width: 154px; height: 76px; }
+      .orbit-2 { width: 175px; height: 94px; }
+    }
+
+    @media (max-height: 700px) and (max-width: 800px) {
+      .hero { padding-top: 34px; }
+      .logo-wrap { width: 160px; height: 160px; }
+      .hero p { margin-top: 12px; margin-bottom: 16px; }
+      .hero-trust { margin-top: 12px; }
+    }
+
+    @media (orientation: landscape) and (max-width: 900px) {
+      .hero { padding-top: 34px; }
+      .logo-wrap { width: 150px; height: 150px; }
+      .hero p { max-width: 650px; }
+      .hero-trust { display: flex; }
+      .hero .actions { flex-direction: row; }
+      .hero .actions .btn { width: auto; }
+    }
+
+
+    .scroll-progress{position:fixed;left:0;top:0;z-index:1000;width:100%;height:3px;background:transparent;pointer-events:none}.scroll-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px rgba(0,217,255,.65);transition:width .08s linear}
+    .status-chip{display:inline-flex;align-items:center;gap:7px}.status-chip i{width:7px;height:7px;border-radius:50%;background:#37e39a;box-shadow:0 0 10px rgba(55,227,154,.7)}
+    .quick-section{padding-top:24px;padding-bottom:18px}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-card{min-height:82px;display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:inherit;text-align:left;cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease}.quick-card:hover{transform:translateY(-3px);border-color:rgba(0,185,255,.35);background:rgba(0,145,255,.07)}.quick-card strong{display:block;font-size:14px}.quick-card small{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.4}.quick-icon{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:12px;background:rgba(0,128,255,.11);border:1px solid rgba(0,185,255,.16);font-size:18px}.stat-support{border-color:rgba(255,193,7,.24)}.member-refresh{margin:8px auto 0;display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#8fb3d9;font:600 11px Inter,sans-serif;cursor:pointer}.member-refresh:hover{color:#fff}.member-refresh:disabled{opacity:.5;cursor:wait}.footer-install{border:0;background:none;color:inherit;font:inherit;cursor:pointer}.mobile-action-bar{display:none}.share-chip{cursor:pointer}
+    @media (max-width:900px){.quick-grid{grid-template-columns:repeat(2,1fr)}.nav-cta{padding:10px 13px}.footer-inner{align-items:flex-start}}
+    @media (max-width:800px){body{padding-bottom:calc(68px + env(safe-area-inset-bottom));}.quick-section{padding-top:12px;padding-bottom:10px}.quick-grid{grid-template-columns:repeat(2,1fr);gap:10px}.quick-card{min-height:74px;padding:13px}.quick-card strong{font-size:13px}.quick-card small{font-size:10px}.member-refresh{margin-top:4px}.mobile-action-bar{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:120;display:grid;grid-template-columns:repeat(3,1fr);padding:7px;border-radius:18px;background:rgba(4,12,22,.9);border:1px solid rgba(0,185,255,.2);backdrop-filter:blur(16px);box-shadow:0 16px 35px rgba(0,0,0,.35)}.mobile-action-bar a,.mobile-action-bar button{min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:#dce9f8;border-radius:12px;font:700 11px Inter,sans-serif}.mobile-action-bar a:active,.mobile-action-bar button:active{background:rgba(0,145,255,.12)}.mobile-action-bar span{font-size:17px;line-height:1}.quick-grid .quick-card:nth-child(4){display:none}body.light .mobile-action-bar{background:rgba(248,252,255,.92);border-color:rgba(16,96,180,.14);box-shadow:0 16px 35px rgba(31,89,143,.16)}body.light .mobile-action-bar a,body.light .mobile-action-bar button{color:#19314a}.status-chip{display:none}.scroll-progress{height:2px}}
+    @media (max-width:520px){.quick-grid{grid-template-columns:1fr 1fr}.quick-card{min-height:68px}.quick-icon{width:34px;height:34px;flex-basis:34px;font-size:16px}.quick-card span:last-child{min-width:0}.quick-card strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.member-refresh{font-size:10px}}
+    @media (prefers-reduced-motion:reduce){.scroll-progress span{transition:none}.quick-card{transition:none}}
+  
+    /* ===== V6 Premium additions ===== */
+    .hero-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+    .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;border:1px solid rgba(0,185,255,.18);background:rgba(255,255,255,.035);font-size:11px;color:#c9dbef}
+    .hero-badge .pulse-mini{width:7px;height:7px;border-radius:50%;background:#35e29a;box-shadow:0 0 12px rgba(53,226,154,.75);animation:miniPulse 1.8s ease-in-out infinite}
+    @keyframes miniPulse{50%{transform:scale(1.2);opacity:.65}}
+    .live-dashboard{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}
+    .live-panel,.milestone-panel{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(145deg,rgba(10,28,50,.82),rgba(5,14,26,.78));box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .live-panel::before,.milestone-panel::before{content:"";position:absolute;inset:auto -15% -55% 15%;height:180px;background:radial-gradient(circle,rgba(0,180,255,.12),transparent 66%);pointer-events:none}
+    .live-panel-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:20px}
+    .mini-kicker{font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan);font-weight:800}
+    .live-panel h3,.milestone-panel h3{font-family:Orbitron,sans-serif;margin-top:7px;font-size:21px}
+    .api-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;border:1px solid rgba(53,226,154,.2);background:rgba(53,226,154,.06);font-size:10px;color:#bcefd6;white-space:nowrap}
+    .api-chip i{width:7px;height:7px;border-radius:50%;background:#35e29a;box-shadow:0 0 10px rgba(53,226,154,.7)}
+    .live-number{display:flex;align-items:baseline;gap:10px}
+    .live-number strong{font:900 clamp(42px,6vw,68px) Orbitron,sans-serif;letter-spacing:-2px;background:linear-gradient(90deg,#fff,#7ed0ff,#00eaff);-webkit-background-clip:text;color:transparent}
+    .live-number span{color:var(--muted);font-size:14px}
+    .live-sub{color:var(--muted);font-size:12px;line-height:1.6;max-width:650px;margin-top:8px}
+    .live-meter{height:8px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:18px;border:1px solid rgba(255,255,255,.06)}
+    .live-meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 16px rgba(0,217,255,.45);transition:width .7s ease}
+    .live-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;color:#7891ad;font-size:10px}
+    .mile-current{font-size:34px;font-weight:900;font-family:Orbitron,sans-serif;margin-top:10px}
+    .mile-target{color:var(--muted);font-size:12px;margin-top:4px}
+    .mile-progress{height:10px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:17px;border:1px solid rgba(255,255,255,.06)}
+    .mile-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#2a7fff,#6de9ff);transition:width .7s ease}
+    .mile-note{margin-top:12px;color:var(--muted);font-size:11px;line-height:1.55}
+    .quick-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .kpi{padding:14px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);text-align:center}
+    .kpi strong{display:block;font:800 20px Orbitron,sans-serif}.kpi small{display:block;margin-top:4px;color:var(--muted);font-size:10px}
+    .countdown-card{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+    .countdown{display:grid;grid-template-columns:repeat(4,minmax(64px,1fr));gap:9px;margin-top:18px}
+    .time-box{padding:15px 10px;border-radius:16px;background:rgba(0,128,255,.07);border:1px solid rgba(0,185,255,.14);text-align:center}
+    .time-box strong{display:block;font:900 24px Orbitron,sans-serif}.time-box small{display:block;margin-top:4px;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px}
+    .easter{position:fixed;inset:0;z-index:250;display:none;place-items:center;padding:20px;background:rgba(2,5,11,.78);backdrop-filter:blur(16px)}
+    .easter.show{display:grid}.easter-card{width:min(520px,100%);padding:34px;border-radius:28px;border:1px solid rgba(0,217,255,.24);background:linear-gradient(145deg,rgba(7,22,39,.96),rgba(6,12,24,.96));box-shadow:0 20px 80px rgba(0,0,0,.48);text-align:center;animation:popIn .35s ease}
+    @keyframes popIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+    .easter-card .secret-logo{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(0,217,255,.48));margin-bottom:14px;animation:float 3s ease-in-out infinite}
+    .easter-card h3{font-family:Orbitron,sans-serif;font-size:28px}.easter-card p{margin:10px 0 20px;color:var(--muted);line-height:1.65}
+    body.light .live-panel,body.light .milestone-panel{background:rgba(255,255,255,.74);box-shadow:0 14px 40px rgba(31,89,143,.10)}
+    body.light .hero-badge,body.light .kpi,body.light .time-box{background:rgba(255,255,255,.65);color:#27425e;border-color:rgba(16,96,180,.12)}
+    @media (max-width:900px){.live-dashboard{grid-template-columns:1fr}.countdown-card{grid-template-columns:1fr}.quick-kpis{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:800px){.live-panel,.milestone-panel{padding:21px}.live-panel-head{flex-direction:column}.api-chip{align-self:flex-start}.live-number strong{font-size:46px}.quick-kpis{grid-template-columns:1fr 1fr 1fr}.countdown{grid-template-columns:repeat(4,1fr);gap:7px}.time-box{padding:12px 6px}.time-box strong{font-size:20px}.hero-badge{font-size:10px;padding:7px 9px}}
+    @media (max-width:480px){.live-number{display:block}.live-number span{display:block;margin-top:2px}.countdown{grid-template-columns:repeat(2,1fr)}.quick-kpis{gap:7px}.kpi{padding:11px 7px}.kpi strong{font-size:17px}.easter-card{padding:28px 20px}}
+    @media (prefers-reduced-motion:reduce){.pulse-mini,.easter-card .secret-logo{animation:none}.live-meter span,.mile-progress span{transition:none}}
+
+  
+    /* ===== V7 Clean Mobile Experience ===== */
+    :root{
+      --mobile-gutter:clamp(14px,4vw,24px);
+      --touch:48px;
+    }
+    html{scroll-padding-top:82px;}
+    body{
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      -webkit-tap-highlight-color:transparent;
+    }
+    button,a{touch-action:manipulation;}
+    :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
+
+    @media (max-width:800px){
+      html{scroll-padding-top:76px;}
+      body{
+        background:
+          radial-gradient(circle at 50% 0%, rgba(0,123,255,.16), transparent 34%),
+          var(--bg);
+      }
+      body::before{background-size:42px 42px;opacity:.65;}
+      .container{width:calc(100% - (var(--mobile-gutter) * 2));max-width:720px;}
+
+      header{
+        background:rgba(3,7,13,.82);
+        border-bottom-color:rgba(255,255,255,.08);
+      }
+      nav{height:64px;}
+      .brand{gap:7px;}
+      .brand img{width:36px;height:36px;}
+      .brand span{font-size:12px;letter-spacing:.3px;}
+      .utility-bar{gap:6px;}
+      .theme-toggle,.mobile-menu{
+        width:46px;min-width:46px;height:46px;min-height:46px;
+        border:1px solid rgba(255,255,255,.09);
+        background:rgba(255,255,255,.045);
+      }
+      .navlinks.open{
+        top:calc(100% + 7px);
+        border-radius:18px;
+        padding:8px;
+        max-height:calc(100svh - 80px - env(safe-area-inset-top));
+      }
+      .navlinks.open a{
+        min-height:50px;
+        font-size:15px;
+        border:1px solid transparent;
+      }
+      .navlinks.open a:active{background:rgba(0,145,255,.12);border-color:rgba(0,185,255,.15);}
+
+      .announcement{margin-top:calc(64px + env(safe-area-inset-top));}
+      .announcement-inner{font-size:10px;}
+
+      .hero{
+        min-height:auto;
+        padding:96px 0 38px;
+      }
+      .logo-wrap{
+        width:min(58vw,210px);
+        height:min(58vw,210px);
+        margin-bottom:14px;
+      }
+      .logo-wrap::before{width:82%;height:82%;filter:blur(28px);}
+      .orbit,.orbit-dot{opacity:.55;}
+      .hero .eyebrow{font-size:10px;letter-spacing:3px;margin-bottom:11px;}
+      h1{
+        font-size:clamp(30px,10vw,52px);
+        line-height:1.06;
+        letter-spacing:-1px;
+        text-wrap:balance;
+      }
+      .hero p{
+        max-width:34rem;
+        margin:15px auto 20px;
+        font-size:15px;
+        line-height:1.58;
+      }
+      .hero .actions{
+        display:grid;
+        grid-template-columns:1fr;
+        width:100%;
+        max-width:430px;
+        margin-inline:auto;
+        gap:10px;
+      }
+      .hero .actions .btn{
+        width:100%;
+        min-height:52px;
+        border-radius:15px;
+      }
+      .hero-trust{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:7px;
+        margin-top:15px;
+      }
+      .hero-trust span{
+        padding:8px 10px;
+        border-radius:12px;
+        background:rgba(255,255,255,.025);
+        border:1px solid rgba(255,255,255,.05);
+        text-align:left;
+      }
+      .hero-badges{gap:6px;margin-top:12px;}
+      .hero-badge{font-size:9px;padding:7px 9px;}
+
+      .stats{gap:10px;margin-top:18px;}
+      .stat{
+        min-height:72px;
+        padding:15px 16px;
+        border-radius:16px;
+      }
+      .stat strong{font-size:20px;}
+      .stat span{font-size:11px;}
+      .member-updated{font-size:9px!important;}
+      .member-refresh{
+        min-height:40px;
+        padding:7px 9px;
+        border-radius:10px;
+      }
+
+      section{padding:66px 0;}
+      .section-head{margin-bottom:28px;padding-inline:4px;}
+      .section-head h2{font-size:clamp(25px,7vw,34px);margin-bottom:9px;}
+      .section-head p{font-size:14px;line-height:1.6;}
+
+      .grid,.steps,.about{gap:12px;}
+      .card,.panel,.step{padding:20px;border-radius:18px;}
+      .icon{width:44px;height:44px;margin-bottom:14px;}
+      .card h3{font-size:17px;}
+      .card p,.panel p,.panel li{font-size:13px;line-height:1.6;}
+
+      .quick-section{padding-top:6px;padding-bottom:8px;}
+      .quick-grid{gap:8px;}
+      .quick-card{
+        min-height:72px;
+        padding:12px;
+        border-radius:16px;
+      }
+
+      .live-dashboard{gap:12px;}
+      .live-panel,.milestone-panel{padding:18px;border-radius:18px;}
+      .live-panel-head{gap:9px;margin-bottom:14px;}
+      .live-panel h3,.milestone-panel h3{font-size:18px;}
+      .live-number strong{font-size:clamp(40px,12vw,54px);}
+      .live-sub{font-size:11px;line-height:1.5;}
+      .quick-kpis{gap:7px;margin-top:12px;}
+      .kpi{padding:11px 6px;border-radius:13px;}
+      .kpi strong{font-size:16px;}
+      .kpi small{font-size:9px;}
+
+      .countdown{gap:7px;}
+      .time-box{padding:12px 7px;border-radius:13px;}
+      .time-box strong{font-size:18px;}
+
+      .vote-card{padding:20px!important;border-radius:18px;}
+      .vote-actions{gap:8px!important;}
+      .vote-actions .btn{min-height:50px;}
+
+      .faq-search{font-size:16px!important;min-height:50px;}
+      details summary{min-height:50px;display:flex;align-items:center;}
+
+      .footer{padding-bottom:24px;}
+      .footer-inner{gap:18px;}
+
+      .mobile-action-bar{
+        left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));
+        padding:6px;border-radius:18px;
+      }
+      .mobile-action-bar a,.mobile-action-bar button{
+        min-height:50px;font-size:10px;
+      }
+
+      /* Hide non-essential background particles on small screens for smoother scrolling. */
+      #particleCanvas{opacity:.28;}
+    }
+
+    @media (max-width:480px){
+      .container{width:calc(100% - 28px);}
+      .hero{padding-top:88px;}
+      .logo-wrap{width:174px;height:174px;}
+      .hero .eyebrow{font-size:9px;letter-spacing:2.4px;}
+      .hero p{font-size:14px;}
+      .hero-badges{display:grid;grid-template-columns:1fr 1fr;}
+      .hero-badge{justify-content:center;}
+      .hero-badge:last-child{grid-column:1/-1;}
+      .stats .stat{min-height:68px;}
+      .stat{padding:13px 14px;}
+      .live-number span{font-size:11px;}
+      .api-chip{font-size:9px;}
+    }
+
+    @media (max-width:360px){
+      .container{width:calc(100% - 20px);}
+      .brand span{display:none;}
+      .hero{padding-top:82px;}
+      .logo-wrap{width:158px;height:158px;}
+      h1{font-size:29px;}
+      .hero .actions .btn{min-height:50px;}
+      .hero-badge{font-size:8.5px;}
+    }
+
+    @media (orientation:landscape) and (max-height:620px) and (max-width:900px){
+      .hero{
+        padding-top:74px;
+        padding-bottom:26px;
+      }
+      .logo-wrap{width:118px;height:118px;margin-bottom:8px;}
+      .hero p{max-width:720px;margin:10px auto 14px;}
+      .hero-trust{display:flex;justify-content:center;flex-wrap:wrap;}
+      .hero .actions{grid-template-columns:1fr 1fr;max-width:560px;}
+    }
+
+  
+    .event-dynamic{min-height:260px}
+    .event-date-label{margin-top:14px;color:var(--muted);font-size:13px}
+    .event-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .event-item{padding:18px;border:1px solid rgba(120,180,255,.15);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.025));box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .event-item .event-kicker{margin-bottom:7px}.event-item h3{margin:0 0 7px;font-size:21px}.event-item p{margin:0;color:var(--muted);line-height:1.65}.event-item-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:12px}.event-pill{padding:6px 9px;border-radius:999px;background:rgba(0,185,255,.09);border:1px solid rgba(0,185,255,.12)}
+    .owner-link{opacity:.7}.owner-link:hover{opacity:1}
+    @media (max-width:900px){.event-list{grid-template-columns:1fr}}
+    @media (max-width:600px){.event-dynamic{min-height:0}.event-list{gap:10px}.event-item{padding:15px}.event-item h3{font-size:18px}.event-dynamic .btn{width:100%}}
+
+    .install-app{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,20px);width:min(560px,calc(100% - 24px));z-index:1000;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+    .install-app.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+    .install-app-card{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid rgba(0,217,255,.2);border-radius:18px;background:rgba(6,14,26,.94);backdrop-filter:blur(18px);box-shadow:0 14px 44px rgba(0,0,0,.34)}
+    .install-app-icon img{display:block;border-radius:14px;box-shadow:0 4px 16px rgba(0,217,255,.18)}
+    .install-app-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
+    .install-app-copy strong{font-weight:800}
+    .install-app-copy span{font-size:.82rem;color:var(--muted);line-height:1.35}
+    .install-app-btn{white-space:nowrap}
+    .install-app-close{width:38px;height:38px;border:0;border-radius:12px;background:rgba(255,255,255,.06);color:var(--white);font-size:24px;cursor:pointer}
+    [hidden]{display:none !important;}\n    .ios-install-hint[hidden]{display:none !important;}\n    .ios-install-hint{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);display:grid;place-items:end center;padding:16px calc(16px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));z-index:1100}
+    .ios-install-card{width:min(560px,100%);border:1px solid rgba(0,217,255,.18);border-radius:20px;background:var(--panel);padding:18px;box-shadow:var(--shadow)}
+    .android-install-hint[hidden]{display:none !important;}
+    .android-install-hint{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);display:grid;place-items:end center;padding:16px calc(16px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));z-index:1100}
+    .android-install-card{width:min(560px,100%);border:1px solid rgba(0,217,255,.18);border-radius:20px;background:var(--panel);padding:18px;box-shadow:var(--shadow)}
+    .ios-install-title{font-weight:800;font-size:1.05rem;margin-bottom:8px}.ios-install-card p{color:var(--muted);line-height:1.55;margin-bottom:14px}
+    @media (max-width:640px){
+      .install-app-card{grid-template-columns:auto 1fr auto;gap:10px}
+      .install-app-btn{grid-column:3;grid-row:1}
+      .install-app-close{grid-column:3;grid-row:2;width:32px;height:32px;font-size:20px;justify-self:end}
+      .install-app-copy span{font-size:.76rem}
+    }
+    @media (prefers-reduced-motion:reduce){.install-app{transition:none}}
+
+
+    .growth-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:18px}.growth-panel,.growth-side{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(145deg,rgba(10,28,50,.82),rgba(5,14,26,.78));box-shadow:var(--shadow)}.growth-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.growth-head>div:first-child{display:grid;gap:6px}.growth-head strong{font-size:18px}.growth-head span,.growth-kpis small,.chart-meta{color:var(--muted);font-size:12px}.growth-kpis{display:flex;gap:10px}.growth-kpis span{min-width:76px;padding:9px 11px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:grid}.growth-kpis b{font-size:20px}.chart-wrap{height:240px;margin-top:18px;border-radius:16px;background:linear-gradient(180deg,rgba(0,185,255,.06),transparent),repeating-linear-gradient(to bottom,rgba(255,255,255,.05) 0 1px,transparent 1px 60px);overflow:hidden}.chart-wrap svg{width:100%;height:100%}.chart-meta{display:flex;justify-content:space-between;gap:10px;margin-top:10px}.growth-side{display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.growth-side-icon{font-size:38px;margin-bottom:10px}.growth-side h3{font-family:Orbitron,sans-serif;font-size:21px;margin:7px 0}.growth-goal{font:900 clamp(32px,5vw,54px) Orbitron,sans-serif;background:linear-gradient(90deg,#fff,#7ed0ff,#00eaff);-webkit-background-clip:text;color:transparent}.growth-side p{color:var(--muted);line-height:1.6}.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.news-card{padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.02));box-shadow:var(--shadow)}.news-card .news-date{font-size:11px;color:#7ea8c9;text-transform:uppercase;letter-spacing:.08em}.news-card h3{margin:8px 0;font-size:19px}.news-card p{margin:0;color:var(--muted);line-height:1.65}.news-empty{padding:22px;color:var(--muted)}
+    body.light .growth-panel,body.light .growth-side,body.light .news-card{background:rgba(255,255,255,.76);box-shadow:0 14px 40px rgba(31,89,143,.10)}
+    @media(max-width:900px){.growth-grid,.news-grid{grid-template-columns:1fr}.growth-side{min-height:240px}}
+    @media(max-width:600px){.growth-panel,.growth-side{padding:18px}.growth-head{display:block}.growth-kpis{margin-top:12px}.chart-wrap{height:190px}.news-card{padding:17px}}
+    /* Mobile-first polish */
+    button, a, [role="button"] { -webkit-tap-highlight-color: transparent; }
+    @media (max-width: 800px){
+      .container{width:min(100% - 24px, 720px)}
+      header{background:rgba(3,7,13,.78);padding-top:env(safe-area-inset-top)}
+      nav{height:64px;gap:10px}
+      .brand img{width:38px;height:38px}.brand span{font-size:13px}
+      .navlinks{gap:8px}
+      .navlinks a{display:none}
+      .nav-cta{padding:10px 13px;font-size:12px;border-radius:11px}
+      .theme-toggle{min-width:42px;min-height:42px;padding:8px}
+      .hero{min-height:auto;padding:104px 0 48px}
+      .logo-wrap{width:min(64vw,230px);height:min(64vw,230px);margin-bottom:12px}
+      h1{font-size:clamp(34px,12vw,56px);letter-spacing:-1.3px}
+      .hero p{font-size:15px;line-height:1.55;margin:16px auto 22px}
+      .actions{gap:10px}
+      .actions .btn,.hero .btn{width:100%;max-width:430px;min-height:50px}
+      section{padding:64px 0}
+      .section-head{margin-bottom:28px}
+      .section-head p{font-size:14px;line-height:1.6}
+      .grid{grid-template-columns:1fr;gap:12px}
+      .card{padding:20px;border-radius:18px}
+      .live-dashboard{grid-template-columns:1fr!important}
+      .event-grid,.event-list,.quick-grid{grid-template-columns:1fr!important}
+      .event-item-meta{flex-wrap:wrap}
+      .event-item-meta .event-pill,.event-item-meta a{min-height:40px}
+      .btn{min-height:46px}
+      .floating-top{bottom:calc(86px + env(safe-area-inset-bottom));right:14px}
+      footer .container{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+      body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+    }
+    @media (max-width:480px){
+      .container{width:calc(100% - 18px)}
+      .hero-content{padding-inline:2px}
+      .logo-wrap{width:56vw;height:56vw}
+      .eyebrow{letter-spacing:2.5px;font-size:10px}
+      .section-head h2{font-size:25px}
+      .quick-card{min-height:64px;padding:14px}
+      .install-mobile-bar{width:calc(100% - 18px)}
+      .install-mobile-card{grid-template-columns:auto 1fr auto;gap:10px;padding:10px}
+      .install-mobile-copy strong{font-size:13px}.install-mobile-copy span{font-size:11px}
+      .install-mobile-btn{min-height:42px;padding:10px 12px;font-size:12px}
+    }
+
+    /* App install prompt: always visible on phones, never blocks page content */
+    .install-mobile-bar{
+      position:fixed;
+      left:50%;
+      bottom:calc(10px + env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      width:min(560px,calc(100% - 24px));
+      z-index:1300;
+      display:none;
+      border:1px solid rgba(0,217,255,.18);
+      border-radius:18px;
+      background:rgba(5,13,24,.96);
+      backdrop-filter:blur(18px);
+      box-shadow:0 18px 48px rgba(0,0,0,.38);
+      padding:10px;
+    }
+    .install-mobile-bar.show{display:block}
+    .install-mobile-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+    .install-mobile-icon img{width:42px;height:42px;border-radius:12px;display:block}
+    .install-mobile-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
+    .install-mobile-copy strong{font-size:14px}.install-mobile-copy span{color:var(--muted);font-size:12px;line-height:1.35}
+    .install-mobile-btn{min-height:44px;padding:11px 14px}
+    .install-mobile-close{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--white);font-size:18px}
+    @media (min-width:801px){.install-mobile-bar{display:none!important}}
+    @media (prefers-reduced-motion:reduce){.install-mobile-bar{transition:none}}
+
+
+    .pwa-update-bar[hidden]{display:none !important}
+    .pwa-update-bar{z-index:10000}
+    .pwa-update-bar .install-mobile-card{box-shadow:0 18px 50px rgba(0,0,0,.28)}
+
+    /* V18 premium additions */
+    .v18-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .v18-stat{padding:20px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid var(--line);box-shadow:0 16px 42px rgba(0,0,0,.14)}
+    .v18-stat .icon{font-size:22px;margin-bottom:9px}.v18-stat strong{display:block;font-family:Orbitron,sans-serif;font-size:28px}.v18-stat small{display:block;color:var(--muted);margin-top:5px}
+    .achievement-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+    .achievement{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.025);position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .achievement:hover{transform:translateY(-3px);border-color:rgba(0,217,255,.3);box-shadow:0 14px 35px rgba(0,0,0,.16)}
+    .achievement .badge{font-size:26px;margin-bottom:8px}.achievement strong{display:block;font-size:19px}.achievement small{display:block;color:var(--muted);margin-top:6px;line-height:1.4}.achievement.done{border-color:rgba(68,225,160,.4);background:linear-gradient(145deg,rgba(68,225,160,.08),rgba(255,255,255,.02))}.achievement.locked{opacity:.55}.achievement.done::after{content:'✓';position:absolute;top:12px;right:12px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:rgba(68,225,160,.14);color:#8cf6ca;font-weight:900}
+    .live-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.live-detail{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--line)}.live-detail strong{display:block;font-size:19px}.live-detail span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .mobile-bottom-nav{display:none}
+    .v18-mobile-hint{display:none}
+    @media (max-width:900px){.achievement-grid{grid-template-columns:repeat(3,1fr)}.v18-overview{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:700px){.v18-overview{grid-template-columns:repeat(2,1fr)}.achievement-grid{grid-template-columns:repeat(2,1fr)}.live-detail-grid{grid-template-columns:1fr}.mobile-bottom-nav{position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:1200;display:grid;grid-template-columns:repeat(4,1fr);padding:8px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(4,10,20,.9);backdrop-filter:blur(18px);box-shadow:0 16px 42px rgba(0,0,0,.34)}.mobile-bottom-nav a{display:grid;place-items:center;gap:3px;min-height:52px;border-radius:16px;color:#c7d4e6;font-size:10px;font-weight:700}.mobile-bottom-nav a span{font-size:18px}.mobile-bottom-nav a:active{background:rgba(255,255,255,.08)}body{padding-bottom:86px}.v18-mobile-hint{display:block;margin-top:12px;color:var(--muted);font-size:12px;text-align:center}}
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"><span></span></div>
+  <div class="ambient">
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="aurora aurora-c"></div>
+  </div>
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home" aria-label="Valoris Community home">
+          <img src="logo.png" alt="Logo Valoris Community">
+          <span>VALORIS</span>
+        </a>
+        <div class="navlinks" id="site-nav">
+          <a href="#live">Live</a><a href="#crescita">Crescita</a><a href="#traguardi">Traguardi</a><a href="#news">News</a>
+          <a href="#community">Community</a>
+          <a href="#vantaggi">Vantaggi</a>
+          <a href="#come-entrare">Come entrare</a>
+          <a href="#vota">Vota</a>
+          <a href="#faq">FAQ</a>
+          <a href="#social">Social</a>
+        </div>
+        <div class="actions" style="margin-left:auto;gap:8px">
+          <a class="nav-cta" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">Entra nel Discord</a>
+        </div>
+
+        <div class="utility-bar">
+          <span class="utility-chip">⚡ Community <strong>attiva</strong></span>
+          <button class="utility-chip theme-toggle" id="themeToggle" onclick="toggleTheme()" type="button" aria-label="Cambia tema">☀️ Tema chiaro</button>
+          <button class="mobile-menu" onclick="toggleMenu()" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="announcement" id="announcement">
+    <div class="container announcement-inner">
+      <span>📢 <b>Benvenuto:</b> questo è il sito ufficiale della Valoris Community.</span>
+      <button aria-label="Chiudi annuncio" onclick="closeAnnouncement()">×</button>
+    </div>
+  </div>
+
+
+  <main id="home">
+    <section class="hero" data-reveal>
+      <div class="container hero-content">
+        <div class="logo-wrap hero-logo">
+          <span class="orbit orbit-1"></span>
+          <span class="orbit orbit-2"></span>
+          <span class="orbit-dot dot-1"></span>
+          <span class="orbit-dot dot-2"></span>
+          <span class="orbit-dot dot-3"></span>
+          <img src="logo.png" alt="Valoris Community">
+        </div>
+        <div class="eyebrow">La tua community. Il tuo spazio.</div>
+        <h1 class="hero-title">Benvenuto in <span>Valoris Community</span></h1>
+        <p>
+          Un luogo dove incontrare nuove persone, divertirti, partecipare ad eventi,
+          condividere passioni e costruire una community sempre più grande.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">
+            ✦ Entra nella community
+          </a>
+          <a class="btn btn-secondary" href="#community">Scopri di più ↓</a>
+        </div>
+        <div class="hero-trust" aria-label="Punti di forza della community">
+          <span>🛡️ Community moderata</span>
+          <span>🎮 Gaming & social</span>
+          <span>🎉 Eventi e attività</span>
+        </div>
+        <div class="hero-badges" aria-label="Stato del sito">
+          <span class="hero-badge"><i class="pulse-mini"></i> Live</span>
+          <span class="hero-badge">⚡ Accesso 24/7</span>
+          <span class="hero-badge">📱 Ottimizzato mobile</span>
+        </div>
+
+        <div class="stats" aria-label="Informazioni community">
+          <div class="stat"><strong>24/7</strong><span>Accesso alla community</span></div>
+          <div class="stat live-members-stat">
+            <strong id="memberCount" aria-live="polite">—</strong>
+            <span><span class="live-dot" aria-hidden="true"></span> Membri reali nel server</span>
+            <small id="memberUpdated" class="member-updated">Connessione a Discord…</small>
+            <button class="member-refresh" id="memberRefresh" type="button" onclick="refreshMemberCount(true)" aria-label="Aggiorna il conteggio membri">↻ Aggiorna</button>
+          </div>
+          <div class="stat"><strong>🎮</strong><span>Gaming & social</span></div>
+          <div class="stat stat-support"><strong>⭐</strong><span>Supporta Valoris con un voto</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-section" data-reveal aria-label="Azioni rapide">
+      <div class="container quick-grid">
+        <button class="quick-card" type="button" onclick="shareSite()">
+          <span class="quick-icon">↗</span><span><strong>Condividi il sito</strong><small>Invia Valoris ai tuoi amici</small></span>
+        </button>
+        <button class="quick-card" type="button" onclick="copyInvite()">
+          <span class="quick-icon">🔗</span><span><strong>Copia invito Discord</strong><small>Pronto da incollare ovunque</small></span>
+        </button>
+        <a class="quick-card" href="#vota">
+          <span class="quick-icon">⭐</span><span><strong>Supporta Valoris</strong><small>Vota su Disboard</small></span>
+        </a>
+        <button class="quick-card" type="button" id="installAppBtn" onclick="installApp()" hidden>
+          <span class="quick-icon">📲</span><span><strong>Installa il sito</strong><small>Aggiungilo alla Home</small></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="live" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Valoris Live</div>
+          <h2>La community in tempo reale</h2>
+          <p>Il conteggio dei membri reali viene aggiornato automaticamente dal tuo sistema Discord.</p>
+        </div>
+        <div class="live-dashboard">
+          <article class="live-panel">
+            <div class="live-panel-head">
+              <div><div class="mini-kicker">Discord community</div><h3>Presenza Valoris</h3></div>
+              <span class="api-chip"><i></i> Dati live</span>
+            </div>
+            <div class="live-number"><strong id="liveDashboardMembers">—</strong><span>membri reali</span></div>
+            <p class="live-sub">Nessun bot viene contato nel numero mostrato. Puoi aggiornare manualmente o lasciare che il sito faccia il refresh automatico.</p>
+            <div class="live-meter"><span id="liveMeterFill"></span></div>
+            <div class="live-meta"><span>Ultimo aggiornamento: <b id="liveDashboardUpdated">—</b></span><span>Obiettivo visuale: <b id="liveGoalLabel">—</b></span></div>
+          </article>
+          <article class="milestone-panel">
+            <div class="mini-kicker">Community milestones</div>
+            <h3>Prossimo traguardo</h3>
+            <div class="mile-current" id="milestoneCurrent">—</div>
+            <div class="mile-target" id="milestoneTarget">Caricamento traguardo…</div>
+            <div class="mile-progress"><span id="milestoneFill"></span></div>
+            <p class="mile-note" id="milestoneNote">Ogni nuovo membro porta Valoris più vicino al prossimo traguardo.</p>
+          </article>
+        </div>
+        <div class="quick-kpis" aria-label="Indicatori Valoris">
+          <div class="kpi"><strong>24/7</strong><small>Community accessibile</small></div>
+          <div class="kpi"><strong>⭐</strong><small>Supporto tramite voto</small></div>
+          <div class="kpi"><strong>🎮</strong><small>Gaming & social</small></div>
+        </div>
+        <div class="v18-overview" aria-label="Panoramica live Valoris">
+          <div class="v18-stat"><div class="icon">👤</div><strong id="v18RealMembers">—</strong><small>Utenti reali</small></div>
+          <div class="v18-stat"><div class="icon">🤖</div><strong id="v18BotMembers">—</strong><small>Bot nel server</small></div>
+          <div class="v18-stat"><div class="icon">👥</div><strong id="v18TotalMembers">—</strong><small>Membri totali</small></div>
+          <div class="v18-stat"><div class="icon">📡</div><strong id="v18Latency">Live</strong><small id="v18StatusText">Connessione attiva</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Prossima sfida</div>
+          <h2>Il prossimo evento è qui</h2>
+          <p>La scheda è pronta per un countdown. Inserisci la data dell'evento quando ne hai uno programmato.</p>
+        </div>
+        <div id="featuredEvent" class="panel countdown-card event-dynamic" aria-live="polite">
+          <div>
+            <div class="event-kicker">COUNTDOWN EVENTI</div>
+            <h3 id="featuredEventTitle">Prossimo evento Valoris</h3>
+            <p id="featuredEventDescription" style="color:var(--muted);line-height:1.7;margin-top:8px">Gli eventi pubblicati dal proprietario appariranno qui automaticamente.</p>
+            <div class="actions" style="margin-top:16px"><a id="featuredEventLink" class="btn btn-primary" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">💬 Partecipa</a></div>
+          </div>
+          <div>
+            <div class="countdown" aria-label="Countdown del prossimo evento">
+              <div class="time-box"><strong id="countDays">--</strong><small>Giorni</small></div>
+              <div class="time-box"><strong id="countHours">--</strong><small>Ore</small></div>
+              <div class="time-box"><strong id="countMinutes">--</strong><small>Min</small></div>
+              <div class="time-box"><strong id="countSeconds">--</strong><small>Sec</small></div>
+            </div>
+            <div id="featuredEventDate" class="event-date-label">Nessun evento programmato</div>
+          </div>
+        </div>
+        <div id="eventsList" class="event-list" aria-live="polite" style="margin-top:18px"></div>
+      </div>
+    </section>
+
+    <section id="community" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Perché Valoris</div>
+          <h2>Una community fatta per te</h2>
+          <p>Tutto ciò che serve per vivere Discord al meglio, in un ambiente attivo, organizzato e accogliente.</p>
+        </div>
+        <div class="grid" id="vantaggi">
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Community attiva</h3>
+            <p>Chat, discussioni e persone con cui condividere ogni giorno interessi, gaming e passioni.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎉</div>
+            <h3>Eventi & attività</h3>
+            <p>Partecipa ad eventi, serate community, attività di gruppo e iniziative organizzate dallo staff.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🛡️</div>
+            <h3>Staff & sicurezza</h3>
+            <p>Un ambiente moderato con regole chiare per mantenere la community piacevole per tutti.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎮</div>
+            <h3>Gaming</h3>
+            <p>Trova compagni di gioco, crea gruppi e condividi le tue migliori partite con la community.</p>
+          </article>
+          <article class="card">
+            <div class="icon">💬</div>
+            <h3>Social & amicizie</h3>
+            <p>Conosci nuove persone, entra nelle conversazioni e trova il tuo spazio all'interno di Valoris.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🏆</div>
+            <h3>Ruoli & riconoscimenti</h3>
+            <p>Partecipa alle attività della community e conquista ruoli e riconoscimenti dedicati.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal>
+      <div class="container about">
+        <div class="panel">
+          <h3>La nostra missione</h3>
+          <p>
+            Valoris Community nasce per creare un punto di incontro semplice, divertente e moderno.
+            Qui puoi parlare, giocare, conoscere persone e partecipare alle attività della community
+            senza sentirti fuori posto.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>Cosa trovi nel server</h3>
+          <ul>
+            <li>Canali testuali e vocali organizzati</li>
+            <li>Eventi e attività della community</li>
+            <li>Moderazione e supporto dello staff</li>
+            <li>Spazi dedicati a gaming e social</li>
+            <li>Ruoli e sistemi per la community</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="come-entrare" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">È semplice</div>
+          <h2>Come entrare in Valoris</h2>
+          <p>Ti bastano pochi secondi per iniziare a far parte della community.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="num">01</div>
+            <h3>Clicca sul pulsante</h3>
+            <p>Premi “Entra nella community” e apri il nostro invito Discord.</p>
+          </div>
+          <div class="step">
+            <div class="num">02</div>
+            <h3>Accetta l'invito</h3>
+            <p>Accedi al tuo account Discord e unisciti al server Valoris Community.</p>
+          </div>
+          <div class="step">
+            <div class="num">03</div>
+            <h3>Presentati e divertiti</h3>
+            <p>Leggi le regole, scegli i tuoi ruoli e inizia a conoscere la community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="crescita" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Community analytics</div>
+          <h2>Crescita della community</h2>
+          <p>Storico reale raccolto dal sistema Valoris. Nessun numero viene inventato.</p>
+        </div>
+        <div class="growth-grid">
+          <article class="growth-panel">
+            <div class="growth-head"><div><strong>Andamento membri</strong><span id="growthRangeLabel">Ultimi 7 giorni</span></div><div class="growth-kpis"><span><b id="growthNow">—</b><small>ora</small></span><span><b id="growthDelta">—</b><small>variazione</small></span></div></div>
+            <div class="chart-wrap"><svg id="memberChart" viewBox="0 0 700 240" preserveAspectRatio="none" aria-label="Grafico crescita membri"></svg></div>
+            <div class="chart-meta"><span id="growthMin">—</span><span id="growthMax">—</span><span id="growthUpdated">Dati in attesa</span></div>
+          </article>
+          <article class="growth-side">
+            <div class="growth-side-icon">🚀</div><div class="eyebrow">ROAD TO NEXT</div><h3 id="growthGoalTitle">Prossimo traguardo</h3><strong class="growth-goal" id="growthGoal">—</strong><p id="growthGoalText">Caricamento dei dati...</p><div class="live-meter"><span id="growthGoalFill"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="traguardi" data-reveal>
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Valoris Achievements</div><h2>Traguardi della community</h2><p>I traguardi vengono calcolati automaticamente usando il numero reale degli utenti.</p></div>
+        <div class="achievement-grid" id="achievementGrid"></div>
+      </div>
+    </section>
+
+    <section id="news" data-reveal>
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Aggiornamenti</div><h2>News Valoris</h2><p>Le novità pubblicate direttamente dall'area proprietario.</p></div>
+        <div id="newsGrid" class="news-grid"><div class="panel news-empty">Caricamento news...</div></div>
+      </div>
+    </section>
+
+    <section id="eventi" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Eventi</div>
+          <h2>Vivi la community</h2>
+          <p>Scopri gli appuntamenti e le attività organizzate dalla community direttamente sul nostro server Discord.</p>
+        </div>
+        <div class="panel event-card">
+          <div>
+            <div class="event-kicker">PROSSIMI EVENTI</div>
+            <h3>🎉 Serate, attività e community</h3>
+            <p>Quando viene pubblicato un nuovo evento, trovi data, orario e dettagli direttamente nel server. Così le informazioni restano sempre aggiornate.</p>
+            <div class="actions" style="justify-content:flex-start;margin-top:20px">
+              <a class="btn btn-primary" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">💬 Vedi gli eventi su Discord</a>
+              <button class="btn btn-secondary copy-btn" onclick="copyInvite()" type="button">📋 Copia invito</button>
+            </div>
+          </div>
+          <div class="event-status" aria-label="Stato eventi">
+            <span class="event-status-dot" aria-hidden="true"></span>
+            <strong>Eventi pubblicati nel server</strong>
+            <small>Controlla Discord per gli ultimi aggiornamenti.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="vota" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Supporta Valoris</div>
+          <h2>Vota il server</h2>
+          <p>Un voto richiede solo pochi secondi e ci aiuta a far conoscere Valoris a nuovi membri. Grazie per il supporto!</p>
+        </div>
+        <div class="vote-card">
+          <div class="vote-icon" aria-hidden="true">⭐</div>
+          <div class="vote-content">
+            <div class="event-kicker">VOTA &amp; SUPPORTA</div>
+            <h3>Disboard</h3>
+            <p>Lascia il tuo voto su Disboard per sostenere la crescita della Valoris Community e aiutare altri utenti a scoprire il nostro server.</p>
+            <div class="vote-actions">
+              <a class="btn btn-primary" href="https://disboard.org/it/server/1546956761997643897" target="_blank" rel="noopener noreferrer" aria-label="Vota Valoris su Disboard">⭐ Vota su Disboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="social" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Social</div>
+          <h2>Seguici sui social</h2>
+          <p>Resta aggiornato su Valoris anche fuori da Discord.</p>
+        </div>
+        <div class="social-grid">
+          <article class="social-card">
+            <div class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.3 5.4A16.6 16.6 0 0 0 16.3 4l-.5 1.1a14.6 14.6 0 0 0-7.6 0L7.7 4a16.6 16.6 0 0 0-4 1.4C1.2 9.1.5 12.8.8 16.4a16.8 16.8 0 0 0 4.9 2.5l1.2-1.6a10.8 10.8 0 0 1-1.8-.9l.4-.3a11.9 11.9 0 0 0 10.9 0l.4.3a12 12 0 0 1-1.8.9l1.2 1.6a16.8 16.8 0 0 0 4.9-2.5c.4-4.2-.7-7.9-2.8-11.0Z"></path>
+                <circle cx="8.7" cy="12.8" r="1.4"></circle>
+                <circle cx="15.3" cy="12.8" r="1.4"></circle>
+              </svg>
+            </div>
+            <div>
+              <h3>Discord</h3>
+              <p>Il cuore della community: chat, canali vocali, eventi e aggiornamenti.</p>
+              <a class="btn btn-primary" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">💬 Entra nel server</a>
+            </div>
+          </article>
+          <article class="social-card">
+            <div class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.3" cy="6.8" r="1"></circle>
+              </svg>
+            </div>
+            <div>
+              <h3>Instagram</h3>
+              <p>Foto, aggiornamenti e contenuti ufficiali di Valoris Community.</p>
+              <a class="btn btn-secondary" href="https://www.instagram.com/official_valoris" target="_blank" rel="noopener noreferrer">📸 Apri Instagram</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Domande frequenti</div>
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-tools">
+          <input id="faqSearch" type="search" placeholder="Cerca una domanda..." oninput="filterFaq()" aria-label="Cerca nelle FAQ">
+        </div>
+        <div class="faq" id="faqList">
+          <details data-faq="1">
+            <summary>Il server è gratuito?</summary>
+            <p>Sì. L'accesso alla community Discord è gratuito.</p>
+          </details>
+          <details data-faq="2">
+            <summary>Devo avere Discord?</summary>
+            <p>Sì, per entrare nel server devi avere un account Discord. Puoi usarlo da PC, smartphone o browser.</p>
+          </details>
+          <details data-faq="3">
+            <summary>Ci sono regole da rispettare?</summary>
+            <p>Sì. All'ingresso troverai le regole della community: rispettarle aiuta a mantenere un ambiente sicuro e piacevole.</p>
+          </details>
+          <details data-faq="4">
+            <summary>Posso invitare i miei amici?</summary>
+            <p>Certo, purché gli inviti e le attività rispettino le regole del server e della community.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section data-reveal>
+      <div class="container">
+        <div class="cta" data-reveal>
+          <div class="eyebrow">Ci vediamo su Discord</div>
+          <h2>Pronto a entrare in Valoris?</h2>
+          <p>Unisciti alla community e porta con te la tua voglia di divertirti, giocare e conoscere nuove persone.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">
+              🚀 Entra nella community
+            </a>
+            <button class="btn btn-secondary" type="button" onclick="shareSite()">↗ Condividi</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-action-bar" aria-label="Azioni rapide mobile">
+    <a href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer"><span>💬</span>Discord</a>
+    <a href="#vota"><span>⭐</span>Vota</a>
+    <button type="button" onclick="shareSite()"><span>↗</span>Condividi</button>
+  </div>
+
+  <div class="easter" id="easterEgg" role="dialog" aria-modal="true" aria-labelledby="easterTitle" onclick="closeEaster(event)">
+    <div class="easter-card" onclick="event.stopPropagation()">
+      <img class="secret-logo" src="logo.png" alt="Valoris">
+      <div class="eyebrow">Secret mode unlocked</div>
+      <h3 id="easterTitle">VALORIS SECRET</h3>
+      <p>Hai trovato il piccolo easter egg della community. ✨</p>
+      <button class="btn btn-primary" type="button" onclick="closeEaster()">Torna al sito</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Valoris Community. Tutti i diritti riservati.</span>
+      <span><a href="#eventi">Eventi</a> · <a href="#vota">Vota</a> · <a href="#faq">FAQ</a> · <a href="#social">Social</a> · <span id="ownerLinkWrap" hidden><a class="owner-link" href="./admin.html" rel="nofollow">🔒 Gestione</a> · </span><button type="button" class="footer-install" data-install-button onclick="installApp()" hidden>Installa</button> · <a href="https://instagram.com/official_valoris" target="_blank" rel="noopener noreferrer">Instagram →</a> · <a href="https://discord.gg/PsrCSZ7b2b" target="_blank" rel="noopener noreferrer">Discord →</a></span>
+    </div>
+  </footer>
+
+  <button class="floating-top" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in alto">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const INVITE = "https://discord.gg/PsrCSZ7b2b";
+
+    let deferredInstallPrompt = null;
+
+    async function shareSite() {
+      const data = { title: "Valoris Community", text: "Scopri la Valoris Community", url: window.location.href };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+        } else if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(window.location.href);
+          toast("Link del sito copiato!");
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = window.location.href;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+          toast("Link del sito copiato!");
+        }
+      } catch (e) {
+        if (e && e.name !== "AbortError") toast("Condivisione non disponibile.");
+      }
+    }
+
+    async function installApp() {
+      if (window.__isStandalone?.()) return;
+      if (window.__deferredInstallPrompt) {
+        try {
+          window.__deferredInstallPrompt.prompt();
+          await window.__deferredInstallPrompt.userChoice;
+        } catch (_) {}
+        window.__deferredInstallPrompt = null;
+        document.querySelectorAll('[data-install-button]').forEach(b => b.hidden = true);
+        return;
+      }
+      if (window.__showInstallHelp) window.__showInstallHelp();
+      else toast("Per installare Valoris, usa il menu del browser e scegli “Installa app” o “Aggiungi alla schermata Home”.");
+    }
+
+    function closeAnnouncement() {
+      const el = document.getElementById("announcement");
+      if (el) el.style.display = "none";
+      localStorage.setItem("valorisAnnouncementClosed", "1");
+    }
+
+    function updateThemeButton() {
+      const light = document.body.classList.contains("light");
+      const button = document.getElementById("themeToggle");
+      if (!button) return;
+      const mobile = window.innerWidth <= 800;
+      button.textContent = mobile ? (light ? "🌙" : "☀️") : (light ? "🌙 Tema scuro" : "☀️ Tema chiaro");
+      button.setAttribute("aria-label", light ? "Attiva tema scuro" : "Attiva tema chiaro");
+      button.title = light ? "Attiva tema scuro" : "Attiva tema chiaro";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("valorisTheme", document.body.classList.contains("light") ? "light" : "dark");
+      updateThemeButton();
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector(".navlinks");
+      const button = document.querySelector(".mobile-menu");
+      if (!menu || !button) return;
+      const open = menu.classList.toggle("open");
+      button.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      button.textContent = open ? "×" : "☰";
+      document.body.classList.toggle("menu-open", open);
+    }
+
+    function closeMobileMenu() {
+      const menu = document.querySelector(".navlinks");
+      const button = document.querySelector(".mobile-menu");
+      if (!menu || !button) return;
+      menu.classList.remove("open");
+      button.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = "☰";
+      document.body.classList.remove("menu-open");
+    }
+
+    function toast(message) {
+      const el = document.getElementById("toast");
+      if (!el) return;
+      el.textContent = message;
+      el.classList.add("show");
+      clearTimeout(window.__toast);
+      window.__toast = setTimeout(() => el.classList.remove("show"), 2200);
+    }
+
+    async function copyInvite() {
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(INVITE);
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = INVITE;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+        toast("Invito Discord copiato!");
+      } catch {
+        toast("Non riesco a copiare automaticamente. Tieni premuto sul link Discord per copiarlo.");
+      }
+    }
+
+    function filterFaq() {
+      const input = document.getElementById("faqSearch");
+      if (!input) return;
+      const query = input.value.toLowerCase().trim();
+      document.querySelectorAll("#faqList details").forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query) ? "" : "none";
+      });
+    }
+
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("topBtn");
+      if (btn) btn.classList.toggle("show", window.scrollY > 500);
+      const bar = document.querySelector("#scrollProgress span");
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar) bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+    }, { passive: true });
+
+    if (localStorage.getItem("valorisTheme") === "light") {
+      document.body.classList.add("light");
+    }
+    updateThemeButton();
+
+    if (localStorage.getItem("valorisAnnouncementClosed") === "1") {
+      closeAnnouncement();
+    }
+
+    document.querySelectorAll(".navlinks a").forEach(a => a.addEventListener("click", closeMobileMenu));
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 800) closeMobileMenu();
+      updateThemeButton();
+    }, { passive: true });
+
+    // Reveal elegante delle sezioni
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    // Particelle leggere di sfondo, con densità adattiva
+    const canvas = document.getElementById("particleCanvas");
+    const ctx = canvas && canvas.getContext("2d");
+    if (canvas && ctx && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const particles = [];
+      const resize = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = innerWidth * dpr;
+        canvas.height = innerHeight * dpr;
+        canvas.style.width = innerWidth + "px";
+        canvas.style.height = innerHeight + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        particles.length = 0;
+        const count = innerWidth <= 700 ? 28 : Math.min(70, Math.max(34, Math.floor(innerWidth / 20)));
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            r: Math.random() * 1.7 + .3,
+            vx: (Math.random() - .5) * .22,
+            vy: (Math.random() - .5) * .18,
+            a: Math.random() * .5 + .12,
+            tw: Math.random() * Math.PI * 2
+          });
+        }
+      };
+      const draw = (time) => {
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (const p of particles) {
+          p.x += p.vx; p.y += p.vy; p.tw += .01;
+          if (p.x < -5) p.x = innerWidth + 5;
+          if (p.x > innerWidth + 5) p.x = -5;
+          if (p.y < -5) p.y = innerHeight + 5;
+          if (p.y > innerHeight + 5) p.y = -5;
+          const alpha = p.a * (.7 + Math.sin(p.tw) * .3);
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(91, 193, 255, ${alpha})`;
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      };
+      resize();
+      addEventListener("resize", resize);
+      requestAnimationFrame(draw);
+    }
+
+    // Conteggio membri reali Discord: aggiorna automaticamente ogni 10 secondi.
+    const memberCountEl = document.getElementById("memberCount");
+    const memberUpdatedEl = document.getElementById("memberUpdated");
+    const memberStatEl = document.querySelector(".live-members-stat");
+    let memberRefreshTimer = null;
+
+    function formatMemberCount(value) {
+      return new Intl.NumberFormat("it-IT").format(value);
+    }
+
+    function formatUpdatedAt(iso) {
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return "Aggiornamento live";
+      return `Aggiornato alle ${d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`;
+    }
+
+
+    function nextMilestone(n){
+      const steps=[100,250,500,1000,1500,2500,5000,10000,25000];
+      return steps.find(v=>v>n) || Math.ceil((n+1)/5000)*5000;
+    }
+    function syncLiveDashboard(n, updatedAt){
+      const big=document.getElementById("liveDashboardMembers");
+      const updated=document.getElementById("liveDashboardUpdated");
+      const fill=document.getElementById("liveMeterFill");
+      const goal=document.getElementById("liveGoalLabel");
+      const current=document.getElementById("milestoneCurrent");
+      const target=document.getElementById("milestoneTarget");
+      const mileFill=document.getElementById("milestoneFill");
+      const note=document.getElementById("milestoneNote");
+      if(n == null){ if(big) big.textContent="—"; if(updated) updated.textContent="non disponibile"; return; }
+      const next=nextMilestone(n);
+      const prev=[0,100,250,500,1000,1500,2500,5000,10000,25000].filter(v=>v<=n).slice(-1)[0] || 0;
+      const pct=Math.max(0,Math.min(100,((n-prev)/Math.max(1,next-prev))*100));
+      if(big) big.textContent=formatMemberCount(n);
+      if(updated) updated.textContent=formatUpdatedAt(updatedAt);
+      if(fill) fill.style.width=Math.min(100, (n/next)*100)+"%";
+      if(goal) goal.textContent=formatMemberCount(next);
+      if(current) current.textContent=formatMemberCount(n);
+      if(target) target.textContent=`Traguardo: ${formatMemberCount(next)} membri`;
+      if(mileFill) mileFill.style.width=pct+"%";
+      if(note) note.textContent=`Mancano ${formatMemberCount(Math.max(0,next-n))} membri al prossimo traguardo.`;
+    }
+
+    let logoTapCount=0, logoTapReset=null;
+    function secretLogoTap(){
+      logoTapCount++; clearTimeout(logoTapReset); logoTapReset=setTimeout(()=>logoTapCount=0,1800);
+      if(logoTapCount>=5){ logoTapCount=0; document.getElementById("easterEgg")?.classList.add("show"); }
+    }
+    function closeEaster(event){ if(event && event.target && !event.target.closest(".easter-card")) document.getElementById("easterEgg")?.classList.remove("show"); else if(!event) document.getElementById("easterEgg")?.classList.remove("show"); }
+    document.querySelector(".hero-logo img")?.addEventListener("click",secretLogoTap);
+
+    async function refreshMemberCount(manual = false) {
+      if (!memberCountEl || !memberUpdatedEl) return;
+      memberStatEl?.classList.add("is-loading");
+      const refreshButton = document.getElementById("memberRefresh");
+      if (refreshButton) refreshButton.disabled = true;
+      try {
+        const response = await fetch("./data/discord.json?t=" + Date.now(), {
+          method: "GET",
+          cache: "no-store",
+          headers: { "Accept": "application/json" }
+        });
+        const data = await response.json();
+        if (!response.ok || !data.ok) throw new Error(data.error || "Errore");
+        memberCountEl.textContent = formatMemberCount(data.members);
+        memberUpdatedEl.textContent = formatUpdatedAt(data.updatedAt);
+        memberStatEl?.classList.remove("is-error");
+        syncLiveDashboard(data.members, data.updatedAt);
+        updateV18Overview(data);
+      } catch (error) {
+        console.error("Errore conteggio Discord:", error);
+        memberCountEl.textContent = "—";
+        memberUpdatedEl.textContent = "Conteggio non disponibile";
+        memberStatEl?.classList.add("is-error");
+        syncLiveDashboard(null, null);
+      } finally {
+        memberStatEl?.classList.remove("is-loading");
+        if (refreshButton) refreshButton.disabled = false;
+        if (manual && memberStatEl?.classList.contains("is-error") === false) toast("Conteggio membri aggiornato.");
+      }
+    }
+
+    let eventTimer = null;
+    let featuredEvent = null;
+
+    function escapeHtml(value){
+      return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+    }
+    function formatEventDate(iso){
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return 'Data non disponibile';
+      return d.toLocaleString('it-IT',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+    }
+    function renderEvents(events){
+      const valid = (events || []).filter(e => e && !Number.isNaN(new Date(e.date).getTime())).sort((a,b)=>new Date(a.date)-new Date(b.date));
+      featuredEvent = valid.find(e => e.featured) || valid[0] || null;
+      const title=document.getElementById('featuredEventTitle');
+      const desc=document.getElementById('featuredEventDescription');
+      const link=document.getElementById('featuredEventLink');
+      const date=document.getElementById('featuredEventDate');
+      if(!featuredEvent){
+        if(title) title.textContent='Nessun evento programmato';
+        if(desc) desc.textContent='Il prossimo evento apparirà qui appena lo inserirai dall’area Gestione.';
+        if(link){ link.href=INVITE; link.textContent='💬 Entra in Discord'; }
+        if(date) date.textContent='Tieniti pronto per la prossima attività Valoris';
+      } else {
+        if(title) title.textContent=featuredEvent.title;
+        if(desc) desc.textContent=featuredEvent.description || 'Evento ufficiale della Valoris Community.';
+        if(link){ link.href=featuredEvent.link || INVITE; link.textContent='🚀 '+(featuredEvent.linkLabel || 'Partecipa'); }
+        if(date) date.textContent=formatEventDate(featuredEvent.date);
+      }
+      const list=document.getElementById('eventsList');
+      const others=valid.filter(e=>!featuredEvent || e.id!==featuredEvent.id).slice(0,6);
+      if(list){
+        list.innerHTML=others.length ? others.map(e=>`<article class="event-item"><div class="event-kicker">EVENTO VALORIS</div><h3>${escapeHtml(e.title)}</h3><p>${escapeHtml(e.description || 'Scopri tutti i dettagli nella community.')}</p><div class="event-item-meta"><span class="event-pill">📅 ${escapeHtml(formatEventDate(e.date))}</span><a class="event-pill" href="${escapeHtml(e.link || INVITE)}" target="_blank" rel="noopener noreferrer">${escapeHtml(e.linkLabel || 'Apri')}</a></div></article>`).join('') : '';
+      }
+      startFeaturedCountdown();
+    }
+    function startFeaturedCountdown(){
+      if(eventTimer) clearInterval(eventTimer);
+      const tick=()=>{
+        const ids=['countDays','countHours','countMinutes','countSeconds'];
+        if(!featuredEvent){ ids.forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent='--'; }); return; }
+        const diff=new Date(featuredEvent.date).getTime()-Date.now();
+        if(diff<=0){ ids.forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent='0'; }); return; }
+        const sec=Math.floor(diff/1000);
+        const d=Math.floor(sec/86400), h=Math.floor(sec%86400/3600), m=Math.floor(sec%3600/60), s=sec%60;
+        [d,h,m,s].forEach((v,i)=>{ const el=document.getElementById(ids[i]); if(el) el.textContent=String(v).padStart(2,'0'); });
+      };
+      tick(); eventTimer=setInterval(tick,1000);
+    }
+    async function loadPublicEvents(){
+      try{
+        const r=await fetch('./data/events.json?t='+Date.now(),{cache:'no-store'});
+        const d=await r.json();
+        if(!r.ok||!d.ok) throw new Error(d.error||'Errore');
+        renderEvents(d.events||[]);
+      }catch(err){ console.error('Errore eventi',err); renderEvents([]); }
+    }
+
+    function renderMemberChart(points){
+      const svg=document.getElementById('memberChart'); if(!svg) return;
+      svg.innerHTML='';
+      if(!points?.length){svg.innerHTML='<text x="50%" y="50%" text-anchor="middle" fill="currentColor" opacity=".55">Ancora pochi dati per il grafico</text>';return;}
+      const W=700,H=240,pad=22; const vals=points.map(p=>Number(p.members)||0); const min=Math.min(...vals),max=Math.max(...vals); const range=Math.max(1,max-min);
+      const xy=points.map((p,i)=>{const x=pad+(i/(Math.max(1,points.length-1)))*(W-pad*2);const y=H-pad-((p.members-min)/range)*(H-pad*2);return [x,y];});
+      const line=xy.map(([x,y],i)=>(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)).join(' '); const area=line+' L '+xy.at(-1)[0].toFixed(1)+' '+(H-pad)+' L '+xy[0][0].toFixed(1)+' '+(H-pad)+' Z';
+      svg.innerHTML=`<defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2ea8ff" stop-opacity=".32"/><stop offset="1" stop-color="#2ea8ff" stop-opacity="0"/></linearGradient></defs><path d="${area}" fill="url(#chartFill)"/><path d="${line}" fill="none" stroke="#57dfff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+      const minEl=document.getElementById('growthMin'),maxEl=document.getElementById('growthMax'); if(minEl) minEl.textContent=new Intl.NumberFormat('it-IT').format(min); if(maxEl) maxEl.textContent=new Intl.NumberFormat('it-IT').format(max);
+    }
+    async function loadGrowth(){
+      try{const r=await fetch('./data/member-history.json?t='+Date.now(),{cache:'no-store'});const history=await r.json(); if(!Array.isArray(history)) throw new Error('Dati storico non validi'); const d={history};
+        const now=(await (await fetch('./data/discord.json?t='+Date.now(),{cache:'no-store'})).json())?.members; renderMemberChart(history||[]); const first=(history||[])[0]?.members; const delta=(now!=null&&first!=null)?now-first:null;
+        const n=v=>v==null?'—':new Intl.NumberFormat('it-IT').format(v); const nowEl=document.getElementById('growthNow'),deltaEl=document.getElementById('growthDelta'),upd=document.getElementById('growthUpdated'); if(nowEl) nowEl.textContent=n(now); if(deltaEl) deltaEl.textContent=delta==null?'—':(delta>=0?`+${n(delta)}`:n(delta)); if(upd) upd.textContent=now!=null?'Dati aggiornati tramite GitHub Actions':'Dati in attesa';
+        const goal=now!=null?nextMilestone(now):null; const prev=now!=null?([0,100,250,500,1000,1500,2500,5000,10000,25000].filter(v=>v<=now).slice(-1)[0]||0):0; const fill=document.getElementById('growthGoalFill'); const gl=document.getElementById('growthGoal'); const gt=document.getElementById('growthGoalText'); if(goal){if(gl)gl.textContent=n(goal); if(gt)gt.textContent=`Mancano ${n(Math.max(0,goal-now))} membri. ${delta==null?'Continuiamo a raccogliere dati.':delta>0?'La community sta crescendo.':'Monitoriamo il prossimo movimento.'}`; if(fill)fill.style.width=Math.max(0,Math.min(100,((now-prev)/Math.max(1,goal-prev))*100))+'%';}
+      }catch(err){console.error('Errore crescita',err);} }
+    async function loadNews(){
+      const grid=document.getElementById('newsGrid'); if(!grid)return;
+      try{const r=await fetch('./data/news.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();if(!r.ok||!d.ok)throw new Error(d.error||'Errore'); const arr=(d.news||[]).filter(x=>x.published!==false).slice(0,6);
+        grid.innerHTML=arr.length?arr.map(n=>`<article class="news-card"><div class="news-date">${escapeHtml(formatEventDate(n.updatedAt||n.createdAt||new Date().toISOString()))}</div><h3>${escapeHtml(n.title)}</h3><p>${escapeHtml(n.body||n.description||'')}</p></article>`).join(''):'<div class="panel news-empty">Nessuna news pubblicata al momento.</div>';
+      }catch(err){grid.innerHTML='<div class="panel news-empty">News temporaneamente non disponibili.</div>';}
+    }
+    loadGrowth();
+    setInterval(loadGrowth,60000);
+    loadNews();
+    setInterval(loadNews,60000);
+
+    loadPublicEvents();
+    setInterval(loadPublicEvents,30000);
+
+    refreshMemberCount();
+    memberRefreshTimer = setInterval(refreshMemberCount, 10000);
+    window.addEventListener("keydown", (e) => { if(e.key === "Escape") closeEaster(); });
+  </script>
+
+
+  
+  <nav class="mobile-bottom-nav" aria-label="Navigazione rapida mobile">
+    <a href="#home"><span>⌂</span>Home</a>
+    <a href="#live"><span>📡</span>Live</a>
+    <a href="#eventi"><span>🎉</span>Eventi</a>
+    <a href="#vota"><span>⭐</span>Vota</a>
+  </nav>
+  <div id="pwaUpdateBar" class="install-mobile-bar pwa-update-bar" aria-live="polite" hidden>
+    <div class="install-mobile-card">
+      <div class="install-mobile-icon"><img src="icon-192.png" alt="" width="42" height="42"></div>
+      <div class="install-mobile-copy">
+        <strong>Nuova versione disponibile</strong>
+        <span>Valoris è stato aggiornato. Applica subito l’aggiornamento.</span>
+      </div>
+      <button id="pwaUpdateBtn" class="btn btn-primary install-mobile-btn" type="button">Aggiorna</button>
+      <button id="pwaUpdateClose" class="install-mobile-close" type="button" aria-label="Chiudi">×</button>
+    </div>
+  </div>
+
+  <div id="installMobileBar" class="install-mobile-bar" aria-live="polite">
+    <div class="install-mobile-card">
+      <div class="install-mobile-icon"><img src="icon-192.png" alt="" width="42" height="42"></div>
+      <div class="install-mobile-copy">
+        <strong>Installa Valoris</strong>
+        <span id="installMobileText">Aggiungi Valoris alla schermata Home.</span>
+      </div>
+      <button id="installMobileAction" class="btn btn-primary install-mobile-btn" type="button">Installa</button>
+      <button id="installMobileClose" class="install-mobile-close" type="button" aria-label="Chiudi">×</button>
+    </div>
+  </div>
+
+  <div id="androidInstallHint" class="android-install-hint" hidden aria-live="polite">
+    <div class="android-install-card">
+      <button id="androidInstallClose" class="install-app-close" type="button" aria-label="Chiudi istruzioni installazione">×</button>
+      <div class="ios-install-title">🤖 Installa Valoris su Android</div>
+      <p id="androidInstallText">Puoi installare Valoris come app direttamente dal browser.</p>
+      <div style="margin-top:12px;display:grid;gap:8px">
+        <div class="event-pill">1. Apri il menu del browser ⋮</div>
+        <div class="event-pill">2. Tocca <strong>Installa app</strong> oppure <strong>Aggiungi alla schermata Home</strong></div>
+        <div class="event-pill">3. Conferma l'installazione ✅</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="iosInstallHint" class="ios-install-hint" hidden aria-live="polite">
+    <div class="ios-install-card">
+      <button id="iosInstallClose" class="install-app-close" type="button" aria-label="Chiudi istruzioni installazione">×</button>
+      <div class="ios-install-title">📱 Installa Valoris su iPhone</div>
+      <p>Apri questa pagina in <strong>Safari</strong>, tocca <strong>Condividi</strong>, poi <strong>Aggiungi alla schermata Home</strong>. Puoi continuare a navigare normalmente anche senza installarla.</p>
+      <div style="margin-top:12px;display:grid;gap:8px">
+        <div class="event-pill">1. Safari → Condividi ⬆️</div>
+        <div class="event-pill">2. Aggiungi alla schermata Home ➕</div>
+        <div class="event-pill">3. Conferma “Aggiungi” ✅</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const bar = document.getElementById('installMobileBar');
+      const action = document.getElementById('installMobileAction');
+      const close = document.getElementById('installMobileClose');
+      const iosHint = document.getElementById('iosInstallHint');
+      const iosClose = document.getElementById('iosInstallClose');
+      const androidHint = document.getElementById('androidInstallHint');
+      const androidClose = document.getElementById('androidInstallClose');
+      const text = document.getElementById('installMobileText');
+      const isStandalone = () =>
+        window.matchMedia?.('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isAndroid = /android/i.test(navigator.userAgent);
+
+      window.__isStandalone = isStandalone;
+
+      function hideBar(){ if(bar) bar.classList.remove('show'); }
+      function showBar(){ if(bar && !isStandalone()) bar.classList.add('show'); }
+      function closeHints(){
+        if(iosHint) iosHint.hidden = true;
+        if(androidHint) androidHint.hidden = true;
+      }
+      function showIOSHelp(){
+        closeHints();
+        if(iosHint) iosHint.hidden = false;
+        if(text) text.textContent = 'Safari → Condividi → Aggiungi alla Home';
+      }
+      function showAndroidHelp(){
+        closeHints();
+        if(androidHint) androidHint.hidden = false;
+        if(text) text.textContent = 'Chrome → ⋮ → Installa app / Aggiungi alla schermata Home';
+      }
+      function showInstallHelp(){
+        if(isIOS) showIOSHelp();
+        else if(isAndroid) showAndroidHelp();
+        else if(typeof toast === 'function') toast('Apri dal telefono per installare Valoris come app.');
+      }
+      window.__showInstallHelp = showInstallHelp;
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        window.__deferredInstallPrompt = event;
+        if (!isStandalone()) showBar();
+      });
+
+      action?.addEventListener('click', async () => {
+        if (isIOS) { showIOSHelp(); return; }
+        const promptEvent = window.__deferredInstallPrompt;
+        if (promptEvent) {
+          try {
+            promptEvent.prompt();
+            const result = await promptEvent.userChoice;
+            if (result?.outcome === 'accepted') hideBar();
+          } catch (_) {
+            showAndroidHelp();
+          } finally {
+            window.__deferredInstallPrompt = null;
+          }
+          return;
+        }
+        if (isAndroid) { showAndroidHelp(); return; }
+        showInstallHelp();
+      });
+
+      close?.addEventListener('click', hideBar);
+      window.addEventListener('appinstalled', () => {
+        window.__deferredInstallPrompt = null;
+        hideBar();
+        closeHints();
+      });
+      iosClose?.addEventListener('click', () => { if (iosHint) iosHint.hidden = true; });
+      androidClose?.addEventListener('click', () => { if (androidHint) androidHint.hidden = true; });
+
+      // Mobile: mostra sempre un invito non bloccante. Se Chrome offre il prompt nativo, il pulsante lo userà.
+      if (!isStandalone() && (isIOS || isAndroid)) {
+        setTimeout(showBar, 800);
+      }
+
+      // GitHub Pages non ha una sessione server-side: il link pubblico alla gestione resta nascosto.
+      const ownerWrap = document.getElementById('ownerLinkWrap');
+      if (ownerWrap) ownerWrap.hidden = true;
+
+      // PWA update manager: detect a waiting service worker and let the user
+      // apply the new version with one tap. Nothing reloads unexpectedly.
+      if ('serviceWorker' in navigator) {
+        const updateBar = document.getElementById('pwaUpdateBar');
+        const updateBtn = document.getElementById('pwaUpdateBtn');
+        const updateClose = document.getElementById('pwaUpdateClose');
+        let refreshing = false;
+        let currentVersion = document.querySelector('meta[name="valoris-version"]')?.content || 'unknown';
+
+        const showUpdate = () => { if (updateBar) updateBar.hidden = false; };
+        const hideUpdate = () => { if (updateBar) updateBar.hidden = true; };
+
+        updateClose?.addEventListener('click', hideUpdate);
+
+        async function applyUpdate(){
+          const reg = window.__pwaRegistration;
+          if (!reg) { window.location.reload(); return; }
+          try {
+            await reg.update();
+            if (reg.waiting) {
+              reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+              return;
+            }
+            // Wait briefly for a new worker to finish installing.
+            await new Promise(resolve => setTimeout(resolve, 1200));
+            if (reg.waiting) {
+              reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+            } else {
+              window.location.reload();
+            }
+          } catch (_) {
+            window.location.reload();
+          }
+        }
+        updateBtn?.addEventListener('click', applyUpdate);
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (refreshing) return;
+          refreshing = true;
+          window.location.reload();
+        });
+
+        async function checkPublishedVersion(){
+          try {
+            const r = await fetch('./version.json?t=' + Date.now(), { cache:'no-store', credentials:'same-origin' });
+            if (!r.ok) return;
+            const data = await r.json();
+            if (data.version && currentVersion !== 'unknown' && data.version !== currentVersion) {
+              showUpdate();
+            }
+          } catch (_) {}
+        }
+
+        window.addEventListener('load', async () => {
+          try {
+            const registration = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+            window.__pwaRegistration = registration;
+            if (registration.waiting) showUpdate();
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (!newWorker) return;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) showUpdate();
+              });
+            });
+            // Aggressive update checks for an installed app.
+            setTimeout(() => registration.update().catch(() => {}), 1200);
+            setInterval(() => {
+              if (document.visibilityState === 'visible') {
+                registration.update().catch(() => {});
+                checkPublishedVersion();
+              }
+            }, 60 * 1000);
+            checkPublishedVersion();
+          } catch (err) {
+            console.warn('service worker non disponibile:', err);
+          }
+        });
+      }
+      if (isStandalone()) document.documentElement.classList.add('pwa-standalone');
+    })();
+  
+    function updateV18Overview(payload){
+      const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+      if(!payload||!payload.ok){ set('v18StatusText','Dati non disponibili'); set('v18Latency','Offline'); return; }
+      set('v18RealMembers', Number(payload.members??0).toLocaleString('it-IT'));
+      set('v18BotMembers', Number(payload.bots??0).toLocaleString('it-IT'));
+      set('v18TotalMembers', Number(payload.total??0).toLocaleString('it-IT'));
+      set('v18Latency','Live'); set('v18StatusText','Discord sincronizzato');
+      renderV18Achievements(Number(payload.members||0));
+    }
+    function renderV18Achievements(members){
+      const grid=document.getElementById('achievementGrid'); if(!grid) return;
+      const goals=[100,500,1000,1500,2500,5000,10000,25000,50000,100000];
+      const emojis=['🥉','🥈','🥇','💎','🚀','👑','🌌','⚡','🔥','🏆'];
+      grid.innerHTML=goals.map((goal,i)=>{
+        const done=members>=goal;
+        const pct=Math.min(100,Math.round((members/goal)*100));
+        return `<article class="achievement ${done?'done':'locked'}"><div class="badge">${done?emojis[i]:'🔒'}</div><strong>${goal.toLocaleString('it-IT')} membri</strong><small>${done?'Traguardo raggiunto 🎉':`${pct}% del traguardo`}</small></article>`;
+      }).join('');
+    }
+</script>
+</body>
+</html>
